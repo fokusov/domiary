@@ -2,6 +2,8 @@
 
 This roadmap describes the current development direction. It is intentionally product-oriented and may change as the first real users provide feedback.
 
+This file is the single source of truth for phase order. [PRD.md](PRD.md) §43 and [ARCHITECTURE.md](ARCHITECTURE.md) §38 follow the same phases.
+
 ## Phase 0 — Product foundation
 
 **Goal:** turn the PRD into an implementable product architecture.
@@ -10,10 +12,11 @@ This roadmap describes the current development direction. It is intentionally pr
 - [x] Product name and visual identity
 - [x] Initial PRD
 - [x] Open-source repository
-- [ ] Architecture document
+- [x] Architecture document (initial draft)
 - [ ] 1C metadata/domain model
 - [ ] Navigation and UX map
-- [ ] Target platform/version decision
+- [x] Target platform version: 1C:Enterprise 8.5 mobile platform
+- [ ] Target OS decision: Android-first or Android + iOS
 - [ ] Test strategy
 - [ ] Build/release strategy
 
@@ -30,7 +33,7 @@ This roadmap describes the current development direction. It is intentionally pr
 - [ ] Warranties
 - [ ] Documents
 - [ ] Asset timeline
-- [ ] Search
+- [ ] Basic search
 
 **Exit criterion:** a user can create a home, add assets, attach basic information and retrieve it quickly.
 
@@ -68,7 +71,7 @@ This roadmap describes the current development direction. It is intentionally pr
 - [ ] Savings goals
 - [ ] Debts
 - [ ] Planned major purchases
-- [ ] Links between household projects, obligations and simple finances
+- [ ] Links between obligations, maintenance costs and simple finances (project links come with post-v1 projects)
 
 ### Explicit exclusions
 
@@ -87,6 +90,7 @@ This roadmap describes the current development direction. It is intentionally pr
 - [ ] Versioned backup format
 - [ ] Export
 - [ ] Data migrations
+- [ ] Search performance hardening
 - [ ] Regression tests for critical flows
 - [ ] Upgrade tests
 - [ ] Release packaging
@@ -104,7 +108,7 @@ These features are deliberately postponed until real usage validates the product
 - QR codes for assets and storage locations;
 - maintenance templates;
 - richer reports;
-- multiple-property UX improvements;
+- multiple-property UX improvements (multiple properties themselves are supported in v1);
 - desktop client;
 - optional family sharing;
 - optional synchronization.

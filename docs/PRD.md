@@ -2,7 +2,7 @@
 
 **Status:** Draft  
 **Version:** 0.1  
-**Product type:** Open-source mobile-first application on 1C:Enterprise mobile platform  
+**Product type:** Open-source mobile-first application on 1C:Enterprise 8.5 mobile platform  
 **Primary platform:** Mobile  
 **Potential secondary platform:** Desktop  
 **License:** Apache License 2.0  
@@ -350,6 +350,8 @@ AI должен уменьшать количество ручных дейст�
 - ориентировочная стоимость;
 - заметка.
 
+В v1 исполнитель и расходник хранятся как свободный текст. Связь со справочниками контактов (раздел 15) и расходников (раздел 14) появляется после v1.
+
 Пример:
 
 ```text
@@ -666,7 +668,7 @@ Post-v1 feature.
 - объектом недвижимости;
 - событием;
 - обязательством;
-- проектом.
+- проектом (после v1, вместе с разделом 16).
 
 ### Types
 
@@ -701,6 +703,7 @@ Post-v1 feature.
 - просроченные задачи;
 - ближайшее обслуживание;
 - окончание гарантии;
+- окончание срока действия документов (например, страховки);
 - показания счетчиков;
 - обязательные платежи.
 
@@ -771,7 +774,10 @@ Timeline должен позволять фильтровать:
 - имущество;
 - помещения;
 - документы;
-- задачи;
+- задачи.
+
+После v1, по мере появления соответствующих разделов:
+
 - расходники;
 - проекты;
 - контакты.
@@ -786,7 +792,7 @@ Results:
 
 ```text
 Фильтр воды Aquaphor
-HEPA filter Xiaomi
+Очиститель воздуха Xiaomi (HEPA filter)
 Задача: заменить фильтр котла
 Документ: инструкция системы очистки воды
 ```
@@ -977,7 +983,7 @@ Candidates:
 - шаблоны обслуживания;
 - PDF export;
 - import/export improvements;
-- несколько объектов недвижимости;
+- улучшение UX для нескольких объектов недвижимости (сами объекты поддерживаются уже в v1);
 - расширенная статистика.
 
 ---
@@ -1186,6 +1192,14 @@ The product itself must remain useful independently of these research goals.
 
 Для open-source MVP более важны product signals, чем vanity metrics.
 
+Приложение не отправляет телеметрию без явного согласия (раздел 32). Поэтому product signals собираются только из добровольных источников:
+
+- опросы и обратная связь пользователей;
+- opt-in отчет, который пользователь сам формирует и отправляет (агрегированные счетчики без пользовательских данных);
+- issue и обсуждения в репозитории.
+
+Значения ниже — ориентиры для таких источников, а не автоматически измеряемые метрики.
+
 ### Product signals
 
 - пользователи создают > 10 assets;
@@ -1269,7 +1283,7 @@ MVP НЕ является:
 
 Требуют отдельного продуктового решения:
 
-1. Целевая версия платформы 1С.
+1. ~~Целевая версия платформы 1С.~~ **Решено:** мобильная платформа 1С:Предприятие 8.5.
 2. Android-first или параллельная поддержка Android/iOS.
 3. Формат хранения файлов внутри мобильной базы.
 4. Ограничения размера локальной базы.
@@ -1290,43 +1304,55 @@ MVP НЕ является:
 
 ## 43. Recommended Development Sequence
 
-### Phase 0 — Product skeleton
+Единственный источник плана по фазам — [ROADMAP.md](ROADMAP.md). Ниже краткая сводка той же последовательности.
 
-- navigation;
+### Phase 0 — Product foundation
+
+- architecture and metadata model;
+- navigation and UX map;
+- platform decisions;
+- test and build strategy.
+
+### Phase 1 — Home & assets
+
 - properties;
 - locations;
 - assets;
-- timeline.
-
-### Phase 1 — Asset lifecycle
-
+- photos and purchase information;
 - warranty;
 - documents;
-- maintenance;
-- tasks;
-- reminders.
+- asset timeline;
+- basic search.
 
-### Phase 2 — Home operations
+### Phase 2 — Maintenance & reminders
+
+- tasks;
+- maintenance;
+- reminders;
+- attention dashboard.
+
+### Phase 3 — Home operations
 
 - meters;
 - obligations;
-- dashboard.
+- global timeline;
+- dashboard refinements.
 
-### Phase 3 — Simple finance
+### Phase 4 — Simple personal assets
 
 - accounts;
 - savings;
 - debts;
 - planned purchases.
 
-### Phase 4 — Hardening
+### Phase 5 — Data safety
 
-- search;
 - backup;
 - restore;
 - export;
 - migrations;
-- tests.
+- regression tests;
+- search performance hardening.
 
 ### Release v1
 
@@ -1356,6 +1382,7 @@ Validate actual usage before adding:
 
 Пользователь видит:
 
+- «Что требует внимания»;
 - «Мои вещи»;
 - «Что нужно сделать»;
 - «Платежи»;

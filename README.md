@@ -11,6 +11,7 @@
 
 <p align="center">
   <a href="docs/PRD.md">PRD</a> ·
+  <a href="docs/ARCHITECTURE.md">Architecture</a> ·
   <a href="docs/ROADMAP.md">Roadmap</a> ·
   <a href="CONTRIBUTING.md">Contributing</a> ·
   <a href="LICENSE">Apache 2.0</a>
@@ -141,7 +142,7 @@ The assistant may notice overdue or unusual maintenance and **suggest** actions.
 
 ## Technology
 
-Domiary is planned as a **mobile-first open-source application on the 1C:Enterprise mobile platform**.
+Domiary is planned as a **mobile-first open-source application on the 1C:Enterprise 8.5 mobile platform**.
 
 Current architectural direction:
 
@@ -159,7 +160,7 @@ The project also serves as a public reference implementation for modern product 
 
 **Early design / pre-development.**
 
-The current repository contains the product specification and initial visual identity. Architecture and implementation are the next milestones.
+The current repository contains the product specification, the initial architecture draft and the visual identity. Resolving the open architecture decisions and starting implementation are the next milestones.
 
 Progress is tracked in the [roadmap](docs/ROADMAP.md).
 
@@ -171,9 +172,9 @@ Internally, Domiary can use catalogs, documents, registers and other strengths o
 
 The user should see:
 
-- My Home
-- My Things
 - What Needs Attention
+- My Things
+- What To Do
 - Payments
 - Savings
 - History
@@ -185,6 +186,7 @@ The user should see:
 ```text
 .
 ├── docs/
+│   ├── ARCHITECTURE.md
 │   ├── PRD.md
 │   └── ROADMAP.md
 ├── icon.png

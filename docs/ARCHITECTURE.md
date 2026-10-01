@@ -3,7 +3,7 @@
 **Status:** Draft  
 **Version:** 0.1  
 **Product:** Domiary  
-**Platform:** 1C:Enterprise Mobile Platform  
+**Platform:** 1C:Enterprise 8.5 Mobile Platform  
 **Architecture style:** modular monolith, offline-first, local-first  
 **Primary client:** mobile  
 **Future clients:** desktop, optional synchronized clients
@@ -490,6 +490,16 @@ Important rule:
 
 The asset card should not attempt to contain all history directly. Historical facts belong to events/documents/registers.
 
+Source of truth for fields that also have history:
+
+| Asset field | Source of truth | Asset field role |
+|---|---|---|
+| CurrentLocation, Property | `AssetLocationHistory` register (written by `AssetMovement`) | denormalized cache of the latest record |
+| Status | `AssetStatusHistory` register | denormalized cache of the latest record |
+| PurchaseDate, PurchasePrice, Currency | `AssetPurchase` document | denormalized cache filled on posting |
+
+Cache fields are written only by the `DomiaryAssets` service, in the same transaction as the source record. Forms never edit them directly.
+
 ---
 
 ### 6.5. Catalog: Manufacturers
@@ -522,11 +532,13 @@ Fields:
 
 - Name;
 - Currency;
-- OpeningBalance;
+- CurrentBalance;
 - Notes;
 - Archived.
 
 No bank integration is assumed.
+
+In v1 `CurrentBalance` is edited manually by the user, as the PRD requires. Payments and contributions may reference an account for information, but they do not change its balance. Event-derived balances are a post-v1 option (see §8.5).
 
 ---
 
@@ -563,6 +575,112 @@ Fields:
 - Messenger;
 - Specialization;
 - Notes.
+
+In v1 contractor information is stored as free text on maintenance rules and events (`ContractorText`). When this catalog is introduced, a migration can link existing text values to contacts.
+
+---
+
+### 6.9. Catalog: MaintenanceRules
+
+Recurring maintenance definition for an asset.
+
+Fields:
+
+- Asset;
+- MaintenanceType;
+- RecurrenceRule (see §10);
+- ContractorText;
+- ConsumableText;
+- EstimatedCost;
+- Notes;
+- Active.
+
+Current schedule state (last and next date) lives in the `MaintenanceSchedule` register (§8.4).
+
+`ConsumableText` is free text in v1. A link to a consumables catalog is post-v1.
+
+---
+
+### 6.10. Catalog: Meters
+
+Fields:
+
+- Name;
+- Property;
+- Unit;
+- TariffCount;
+- ReadingRecurrenceRule (see §10);
+- Notes;
+- Archived.
+
+---
+
+### 6.11. Catalog: Obligations
+
+Recurring household payment definition.
+
+Fields:
+
+- Name;
+- Category;
+- Amount;
+- Currency;
+- RecurrenceRule (see §10);
+- Property optional;
+- Notes;
+- Archived.
+
+---
+
+### 6.12. Catalog: Debts
+
+Fields:
+
+- Counterparty (text);
+- Direction (owed to me / I owe);
+- InitialAmount;
+- Currency;
+- Date;
+- DueDate;
+- Notes;
+- Status.
+
+Remaining amount is derived from `DebtOperation` documents (§7.7, §8.7).
+
+---
+
+### 6.13. Catalog: PlannedPurchases
+
+Fields:
+
+- Name;
+- EstimatedCost;
+- Currency;
+- Priority;
+- TargetDate;
+- SavingsGoal optional;
+- Notes;
+- Status.
+
+---
+
+### 6.14. Catalog: Attachments
+
+Metadata for files linked to domain objects. See §12 for storage strategy.
+
+Fields:
+
+- Title;
+- DocumentType;
+- RelatedObject;
+- CreatedAt;
+- ValidUntil optional;
+- ReminderAt optional;
+- Notes;
+- FileReference;
+- Checksum optional.
+
+The user-facing term is "document". The catalog name differs to avoid confusion with 1C document metadata objects.
 
 ---
 
@@ -618,7 +736,7 @@ Fields:
 - MaintenanceType;
 - MaintenanceRule;
 - Cost;
-- Contractor;
+- ContractorText (free text in v1, see §6.8);
 - Notes.
 
 Optional attachments:
@@ -666,8 +784,9 @@ Fields:
 Posting behavior:
 
 - mark current period as paid;
-- append timeline event;
-- optionally affect account balance.
+- append timeline event.
+
+The optional `Account` is informational in v1 and does not change the account balance (see §6.6).
 
 ---
 
@@ -793,7 +912,7 @@ Resource:
 
 Only needed if the finance module starts recording actual operations.
 
-If v1 uses manually edited balances, this register can be postponed.
+v1 uses manually edited balances (§6.6), so this register is postponed until after v1.
 
 ---
 
@@ -911,8 +1030,17 @@ If notifications are lost or OS permissions change, the application must be able
 
 Recommended flow:
 
+Notification sources:
+
+- tasks;
+- maintenance schedule;
+- obligations;
+- meter reading schedule;
+- warranty end dates;
+- document validity dates and document reminders.
+
 ```text
-Task / Maintenance / Obligation changed
+Source object changed
                ↓
 NotificationService
                ↓
@@ -1038,6 +1166,7 @@ Dashboard data is calculated from:
 - overdue tasks;
 - upcoming maintenance;
 - expiring warranties;
+- expiring documents;
 - upcoming meter readings;
 - unpaid obligations;
 - savings progress;
@@ -1318,6 +1447,16 @@ Recommended top-level navigation:
 - More.
 
 Alternative compact navigation may be tested later.
+
+Mapping to the user-facing terms from the README and PRD §44:
+
+| Tab | User-facing sections |
+|---|---|
+| Home | What Needs Attention, History |
+| Things | My Things |
+| Tasks | What To Do |
+| Finance | Payments, Savings |
+| More | meters, documents, settings, backup/export |
 
 ### Home
 
@@ -1670,7 +1809,7 @@ Core application has no mandatory network dependency.
 
 ### ADR candidate: timeline as explicit read model
 
-Use a normalized timeline projection if query-time aggregation becomes cumbersome.
+Use a normalized timeline register populated by application services (§13, Option B). Final confirmation is ADR-003.
 
 ### ADR candidate: AI behind tool boundary
 
@@ -1686,7 +1825,7 @@ Finance remains intentionally lightweight.
 
 The following decisions should be resolved before or during Phase 0:
 
-1. Exact target 1C platform version.
+1. ~~Exact target 1C platform version.~~ **Resolved:** 1C:Enterprise 8.5 mobile platform.
 2. Android-first vs Android+iOS from first public release.
 3. Source format and repository structure for configuration.
 4. Metadata naming prefix.
@@ -1694,10 +1833,10 @@ The following decisions should be resolved before or during Phase 0:
 6. Backup packaging format.
 7. Notification implementation details.
 8. Test framework and CI approach.
-9. Timeline: query-time aggregation vs dedicated register.
+9. ~~Timeline: query-time aggregation vs dedicated register.~~ **Direction chosen:** dedicated register (§13); confirm in ADR-003.
 10. Task storage: catalog-style object vs dedicated document/event model.
 11. Warranty fields on Asset vs separate register.
-12. Whether Account balances are manual state or event-derived in v1.
+12. ~~Whether Account balances are manual state or event-derived in v1.~~ **Resolved:** manual state in v1 (§6.6), as the PRD requires.
 13. Encryption requirements for local data and backups.
 14. Minimal supported mobile OS versions.
 15. Packaging/release path for public installation.
@@ -1706,7 +1845,9 @@ The following decisions should be resolved before or during Phase 0:
 
 ## 38. Recommended Implementation Order
 
-### Step 1 — Skeleton
+Phases follow [ROADMAP.md](ROADMAP.md). This section lists the technical work inside each phase.
+
+### Phase 0 — Foundation
 
 Create:
 
@@ -1714,43 +1855,43 @@ Create:
 - common modules;
 - navigation shell;
 - settings;
-- migration versioning.
+- migration versioning;
+- timeline register infrastructure.
 
-### Step 2 — Home model
+### Phase 1 — Home & assets
 
 Implement:
 
 - properties;
 - locations;
 - assets;
-- categories.
-
-### Step 3 — History
-
-Implement:
-
+- categories;
 - asset purchase;
 - movement;
-- timeline.
+- attachments and warranties;
+- asset timeline;
+- basic search.
 
-### Step 4 — Maintenance
+### Phase 2 — Maintenance & reminders
 
 Implement:
 
 - tasks;
 - recurring rules;
 - maintenance completion;
-- notifications.
+- notifications;
+- attention dashboard.
 
-### Step 5 — Home operations
+### Phase 3 — Home operations
 
 Implement:
 
 - meters;
 - readings;
-- obligations.
+- obligations;
+- global timeline.
 
-### Step 6 — Simple finance
+### Phase 4 — Simple personal assets
 
 Implement:
 
@@ -1759,11 +1900,11 @@ Implement:
 - debts;
 - planned purchases.
 
-### Step 7 — Hardening
+### Phase 5 — Data safety
 
 Implement:
 
-- search;
+- search performance hardening;
 - backup;
 - restore;
 - export;

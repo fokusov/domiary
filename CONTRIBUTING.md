@@ -10,7 +10,8 @@ Please read:
 
 1. [README.md](README.md)
 2. [docs/PRD.md](docs/PRD.md)
-3. [docs/ROADMAP.md](docs/ROADMAP.md)
+3. [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+4. [docs/ROADMAP.md](docs/ROADMAP.md)
 
 ## What is useful right now
 
