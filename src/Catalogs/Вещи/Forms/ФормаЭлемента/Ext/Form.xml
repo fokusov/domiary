@@ -232,7 +232,7 @@
 					</SearchControlAddition>
 					<ChildItems>
 						<InputField name="ДокументыНаименование" id="66">
-							<DataPath>Документы.Description</DataPath>
+							<DataPath>Документы.Наименование</DataPath>
 							<ContextMenu name="ДокументыНаименованиеКонтекстноеМеню" id="67"/>
 							<ExtendedTooltip name="ДокументыНаименованиеРасширеннаяПодсказка" id="68"/>
 						</InputField>
@@ -273,8 +273,18 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
-				<DynamicDataRead>false</DynamicDataRead>
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	Вложения.Ссылка КАК Ссылка,
+	Вложения.Наименование КАК Наименование,
+	Вложения.ТипДокумента КАК ТипДокумента,
+	Вложения.ДатаДокумента КАК ДатаДокумента
+ИЗ
+	Справочник.Вложения КАК Вложения
+ГДЕ
+	Вложения.Предмет = &amp;Предмет
+	И НЕ Вложения.ПометкаУдаления</QueryText>
 				<MainTable>Catalog.Вложения</MainTable>
 				<ListSettings>
 					<dcsset:filter>
