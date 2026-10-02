@@ -123,7 +123,92 @@
 					<ContextMenu name="ОбъектНедвижимостиКонтекстноеМеню" id="32"/>
 					<ExtendedTooltip name="ОбъектНедвижимостиРасширеннаяПодсказка" id="33"/>
 				</InputField>
-				<InputField name="ОценочнаяСтоимость" id="34">
+				<UsualGroup name="ГруппаПокупка" id="34">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Покупка и гарантия</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<ShowTitle>true</ShowTitle>
+					<ExtendedTooltip name="ГруппаПокупкаРасширеннаяПодсказка" id="35"/>
+					<ChildItems>
+						<InputField name="ДатаПокупки" id="36">
+							<DataPath>Объект.ДатаПокупки</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Куплена</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДатаПокупкиКонтекстноеМеню" id="37"/>
+							<ExtendedTooltip name="ДатаПокупкиРасширеннаяПодсказка" id="38"/>
+							<Events>
+								<Event name="OnChange">ДатаПокупкиПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ЦенаПокупки" id="39">
+							<DataPath>Объект.ЦенаПокупки</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Цена</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ЦенаПокупкиКонтекстноеМеню" id="40"/>
+							<ExtendedTooltip name="ЦенаПокупкиРасширеннаяПодсказка" id="41"/>
+						</InputField>
+						<InputField name="Продавец" id="42">
+							<DataPath>Объект.Продавец</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Где купили</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ПродавецКонтекстноеМеню" id="43"/>
+							<ExtendedTooltip name="ПродавецРасширеннаяПодсказка" id="44"/>
+						</InputField>
+						<InputField name="ГарантияМесяцев" id="45">
+							<DataPath>Объект.ГарантияМесяцев</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Гарантия, месяцев</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ГарантияМесяцевКонтекстноеМеню" id="46"/>
+							<ExtendedTooltip name="ГарантияМесяцевРасширеннаяПодсказка" id="47"/>
+							<Events>
+								<Event name="OnChange">ГарантияМесяцевПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ГарантияОкончание" id="48">
+							<DataPath>Объект.ГарантияОкончание</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Гарантия до</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ГарантияОкончаниеКонтекстноеМеню" id="49"/>
+							<ExtendedTooltip name="ГарантияОкончаниеРасширеннаяПодсказка" id="50"/>
+						</InputField>
+						<InputField name="ГарантияСервисныйЦентр" id="51">
+							<DataPath>Объект.ГарантияСервисныйЦентр</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сервисный центр</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ГарантияСервисныйЦентрКонтекстноеМеню" id="52"/>
+							<ExtendedTooltip name="ГарантияСервисныйЦентрРасширеннаяПодсказка" id="53"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="ОценочнаяСтоимость" id="54">
 					<DataPath>Объект.ОценочнаяСтоимость</DataPath>
 					<Title>
 						<v8:item>
@@ -131,10 +216,10 @@
 							<v8:content>Сколько стоит сейчас</v8:content>
 						</v8:item>
 					</Title>
-					<ContextMenu name="ОценочнаяСтоимостьКонтекстноеМеню" id="35"/>
-					<ExtendedTooltip name="ОценочнаяСтоимостьРасширеннаяПодсказка" id="36"/>
+					<ContextMenu name="ОценочнаяСтоимостьКонтекстноеМеню" id="55"/>
+					<ExtendedTooltip name="ОценочнаяСтоимостьРасширеннаяПодсказка" id="56"/>
 				</InputField>
-				<InputField name="СсылкаПроизводителя" id="37">
+				<InputField name="СсылкаПроизводителя" id="57">
 					<DataPath>Объект.СсылкаПроизводителя</DataPath>
 					<Title>
 						<v8:item>
@@ -142,19 +227,19 @@
 							<v8:content>Сайт производителя</v8:content>
 						</v8:item>
 					</Title>
-					<ContextMenu name="СсылкаПроизводителяКонтекстноеМеню" id="38"/>
-					<ExtendedTooltip name="СсылкаПроизводителяРасширеннаяПодсказка" id="39"/>
+					<ContextMenu name="СсылкаПроизводителяКонтекстноеМеню" id="58"/>
+					<ExtendedTooltip name="СсылкаПроизводителяРасширеннаяПодсказка" id="59"/>
 				</InputField>
-				<InputField name="Заметка" id="40">
+				<InputField name="Заметка" id="60">
 					<DataPath>Объект.Заметка</DataPath>
 					<Height>3</Height>
 					<MultiLine>true</MultiLine>
-					<ContextMenu name="ЗаметкаКонтекстноеМеню" id="41"/>
-					<ExtendedTooltip name="ЗаметкаРасширеннаяПодсказка" id="42"/>
+					<ContextMenu name="ЗаметкаКонтекстноеМеню" id="61"/>
+					<ExtendedTooltip name="ЗаметкаРасширеннаяПодсказка" id="62"/>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<UsualGroup name="ГруппаДокументы" id="43">
+		<UsualGroup name="ГруппаДокументы" id="63">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -163,31 +248,31 @@
 			</Title>
 			<Group>Vertical</Group>
 			<ShowTitle>true</ShowTitle>
-			<ExtendedTooltip name="ГруппаДокументыРасширеннаяПодсказка" id="44"/>
+			<ExtendedTooltip name="ГруппаДокументыРасширеннаяПодсказка" id="64"/>
 			<ChildItems>
-				<UsualGroup name="ГруппаКомандыДокументов" id="45">
+				<UsualGroup name="ГруппаКомандыДокументов" id="65">
 					<Group>Horizontal</Group>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаКомандыДокументовРасширеннаяПодсказка" id="46"/>
+					<ExtendedTooltip name="ГруппаКомандыДокументовРасширеннаяПодсказка" id="66"/>
 					<ChildItems>
-						<Button name="СфотографироватьДокумент" id="47">
+						<Button name="СфотографироватьДокумент" id="67">
 							<Type>UsualButton</Type>
 							<CommandName>Form.Command.СфотографироватьДокумент</CommandName>
-							<ExtendedTooltip name="СфотографироватьДокументРасширеннаяПодсказка" id="48"/>
+							<ExtendedTooltip name="СфотографироватьДокументРасширеннаяПодсказка" id="68"/>
 						</Button>
-						<Button name="ДобавитьФайл" id="49">
+						<Button name="ДобавитьФайл" id="69">
 							<Type>UsualButton</Type>
 							<CommandName>Form.Command.ДобавитьФайл</CommandName>
-							<ExtendedTooltip name="ДобавитьФайлРасширеннаяПодсказка" id="50"/>
+							<ExtendedTooltip name="ДобавитьФайлРасширеннаяПодсказка" id="70"/>
 						</Button>
-						<Button name="СканироватьДокумент" id="51">
+						<Button name="СканироватьДокумент" id="71">
 							<Type>UsualButton</Type>
 							<CommandName>Form.Command.СканироватьДокумент</CommandName>
-							<ExtendedTooltip name="СканироватьДокументРасширеннаяПодсказка" id="52"/>
+							<ExtendedTooltip name="СканироватьДокументРасширеннаяПодсказка" id="72"/>
 						</Button>
 					</ChildItems>
 				</UsualGroup>
-				<Table name="Документы" id="53">
+				<Table name="Документы" id="73">
 					<DataPath>Документы</DataPath>
 					<AutoRefresh>false</AutoRefresh>
 					<AutoRefreshPeriod>60</AutoRefreshPeriod>
@@ -203,48 +288,120 @@
 					<AllowRootChoice>false</AllowRootChoice>
 					<UpdateOnDataChange>Auto</UpdateOnDataChange>
 					<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
-					<ContextMenu name="ДокументыКонтекстноеМеню" id="54"/>
-					<AutoCommandBar name="ДокументыКоманднаяПанель" id="55"/>
-					<ExtendedTooltip name="ДокументыРасширеннаяПодсказка" id="56"/>
-					<SearchStringAddition name="ДокументыСтрокаПоиска" id="57">
+					<ContextMenu name="ДокументыКонтекстноеМеню" id="74"/>
+					<AutoCommandBar name="ДокументыКоманднаяПанель" id="75"/>
+					<ExtendedTooltip name="ДокументыРасширеннаяПодсказка" id="76"/>
+					<SearchStringAddition name="ДокументыСтрокаПоиска" id="77">
 						<AdditionSource>
 							<Item>Документы</Item>
 							<Type>SearchStringRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="ДокументыСтрокаПоискаКонтекстноеМеню" id="58"/>
-						<ExtendedTooltip name="ДокументыСтрокаПоискаРасширеннаяПодсказка" id="59"/>
+						<ContextMenu name="ДокументыСтрокаПоискаКонтекстноеМеню" id="78"/>
+						<ExtendedTooltip name="ДокументыСтрокаПоискаРасширеннаяПодсказка" id="79"/>
 					</SearchStringAddition>
-					<ViewStatusAddition name="ДокументыСостояниеПросмотра" id="60">
+					<ViewStatusAddition name="ДокументыСостояниеПросмотра" id="80">
 						<AdditionSource>
 							<Item>Документы</Item>
 							<Type>ViewStatusRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="ДокументыСостояниеПросмотраКонтекстноеМеню" id="61"/>
-						<ExtendedTooltip name="ДокументыСостояниеПросмотраРасширеннаяПодсказка" id="62"/>
+						<ContextMenu name="ДокументыСостояниеПросмотраКонтекстноеМеню" id="81"/>
+						<ExtendedTooltip name="ДокументыСостояниеПросмотраРасширеннаяПодсказка" id="82"/>
 					</ViewStatusAddition>
-					<SearchControlAddition name="ДокументыУправлениеПоиском" id="63">
+					<SearchControlAddition name="ДокументыУправлениеПоиском" id="83">
 						<AdditionSource>
 							<Item>Документы</Item>
 							<Type>SearchControl</Type>
 						</AdditionSource>
-						<ContextMenu name="ДокументыУправлениеПоискомКонтекстноеМеню" id="64"/>
-						<ExtendedTooltip name="ДокументыУправлениеПоискомРасширеннаяПодсказка" id="65"/>
+						<ContextMenu name="ДокументыУправлениеПоискомКонтекстноеМеню" id="84"/>
+						<ExtendedTooltip name="ДокументыУправлениеПоискомРасширеннаяПодсказка" id="85"/>
 					</SearchControlAddition>
 					<ChildItems>
-						<InputField name="ДокументыНаименование" id="66">
+						<InputField name="ДокументыНаименование" id="86">
 							<DataPath>Документы.Наименование</DataPath>
-							<ContextMenu name="ДокументыНаименованиеКонтекстноеМеню" id="67"/>
-							<ExtendedTooltip name="ДокументыНаименованиеРасширеннаяПодсказка" id="68"/>
+							<ContextMenu name="ДокументыНаименованиеКонтекстноеМеню" id="87"/>
+							<ExtendedTooltip name="ДокументыНаименованиеРасширеннаяПодсказка" id="88"/>
 						</InputField>
-						<InputField name="ДокументыТипДокумента" id="69">
+						<InputField name="ДокументыТипДокумента" id="89">
 							<DataPath>Документы.ТипДокумента</DataPath>
-							<ContextMenu name="ДокументыТипДокументаКонтекстноеМеню" id="70"/>
-							<ExtendedTooltip name="ДокументыТипДокументаРасширеннаяПодсказка" id="71"/>
+							<ContextMenu name="ДокументыТипДокументаКонтекстноеМеню" id="90"/>
+							<ExtendedTooltip name="ДокументыТипДокументаРасширеннаяПодсказка" id="91"/>
 						</InputField>
-						<InputField name="ДокументыДатаДокумента" id="72">
+						<InputField name="ДокументыДатаДокумента" id="92">
 							<DataPath>Документы.ДатаДокумента</DataPath>
-							<ContextMenu name="ДокументыДатаДокументаКонтекстноеМеню" id="73"/>
-							<ExtendedTooltip name="ДокументыДатаДокументаРасширеннаяПодсказка" id="74"/>
+							<ContextMenu name="ДокументыДатаДокументаКонтекстноеМеню" id="93"/>
+							<ExtendedTooltip name="ДокументыДатаДокументаРасширеннаяПодсказка" id="94"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаИстория" id="95">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<ShowTitle>true</ShowTitle>
+			<ExtendedTooltip name="ГруппаИсторияРасширеннаяПодсказка" id="96"/>
+			<ChildItems>
+				<Table name="История" id="97">
+					<DataPath>История</DataPath>
+					<AutoRefresh>false</AutoRefresh>
+					<AutoRefreshPeriod>60</AutoRefreshPeriod>
+					<Period>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</Period>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<RestoreCurrentRow>false</RestoreCurrentRow>
+					<TopLevelParent xsi:nil="true"/>
+					<ShowRoot>true</ShowRoot>
+					<AllowRootChoice>false</AllowRootChoice>
+					<UpdateOnDataChange>Auto</UpdateOnDataChange>
+					<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+					<ContextMenu name="ИсторияКонтекстноеМеню" id="98"/>
+					<AutoCommandBar name="ИсторияКоманднаяПанель" id="99"/>
+					<ExtendedTooltip name="ИсторияРасширеннаяПодсказка" id="100"/>
+					<SearchStringAddition name="ИсторияСтрокаПоиска" id="101">
+						<AdditionSource>
+							<Item>История</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ИсторияСтрокаПоискаКонтекстноеМеню" id="102"/>
+						<ExtendedTooltip name="ИсторияСтрокаПоискаРасширеннаяПодсказка" id="103"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ИсторияСостояниеПросмотра" id="104">
+						<AdditionSource>
+							<Item>История</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ИсторияСостояниеПросмотраКонтекстноеМеню" id="105"/>
+						<ExtendedTooltip name="ИсторияСостояниеПросмотраРасширеннаяПодсказка" id="106"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ИсторияУправлениеПоиском" id="107">
+						<AdditionSource>
+							<Item>История</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ИсторияУправлениеПоискомКонтекстноеМеню" id="108"/>
+						<ExtendedTooltip name="ИсторияУправлениеПоискомРасширеннаяПодсказка" id="109"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">ИсторияВыборСтроки</Event>
+					</Events>
+					<ChildItems>
+						<InputField name="ИсторияДата" id="110">
+							<DataPath>История.Дата</DataPath>
+							<ContextMenu name="ИсторияДатаКонтекстноеМеню" id="111"/>
+							<ExtendedTooltip name="ИсторияДатаРасширеннаяПодсказка" id="112"/>
+						</InputField>
+						<InputField name="ИсторияЗаголовок" id="113">
+							<DataPath>История.Заголовок</DataPath>
+							<ContextMenu name="ИсторияЗаголовокКонтекстноеМеню" id="114"/>
+							<ExtendedTooltip name="ИсторияЗаголовокРасширеннаяПодсказка" id="115"/>
 						</InputField>
 					</ChildItems>
 				</Table>
@@ -252,14 +409,14 @@
 		</UsualGroup>
 	</ChildItems>
 	<Attributes>
-		<Attribute name="Объект" id="75">
+		<Attribute name="Объект" id="116">
 			<Type>
 				<v8:Type>cfg:CatalogObject.Вещи</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<SavedData>true</SavedData>
 		</Attribute>
-		<Attribute name="АдресФото" id="76">
+		<Attribute name="АдресФото" id="117">
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -268,7 +425,7 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="Документы" id="77">
+		<Attribute name="Документы" id="118">
 			<Type>
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
@@ -304,9 +461,48 @@
 				</ListSettings>
 			</Settings>
 		</Attribute>
+		<Attribute name="История" id="119">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	Хроника.Идентификатор КАК Идентификатор,
+	Хроника.Дата КАК Дата,
+	Хроника.Заголовок КАК Заголовок,
+	Хроника.ТипСобытия КАК ТипСобытия
+ИЗ
+	РегистрСведений.Хроника КАК Хроника
+ГДЕ
+	Хроника.Объект = &amp;Объект</QueryText>
+				<MainTable>InformationRegister.Хроника</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Дата</dcsset:field>
+							<dcsset:orderType>Desc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
 	</Attributes>
 	<Commands>
-		<Command name="ДобавитьФото" id="78">
+		<Command name="ДобавитьФото" id="120">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -319,7 +515,7 @@
 			</Picture>
 			<Action>ДобавитьФотоОбработка</Action>
 		</Command>
-		<Command name="СфотографироватьДокумент" id="79">
+		<Command name="СфотографироватьДокумент" id="121">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -328,7 +524,7 @@
 			</Title>
 			<Action>СфотографироватьДокументОбработка</Action>
 		</Command>
-		<Command name="ДобавитьФайл" id="80">
+		<Command name="ДобавитьФайл" id="122">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -337,7 +533,7 @@
 			</Title>
 			<Action>ДобавитьФайлОбработка</Action>
 		</Command>
-		<Command name="СканироватьДокумент" id="81">
+		<Command name="СканироватьДокумент" id="123">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
