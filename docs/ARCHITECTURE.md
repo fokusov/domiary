@@ -880,12 +880,11 @@ Use a register if warranty history or multiple warranties become necessary.
 
 ### 8.4. MaintenanceSchedule
 
-Type: information register.
+Type: independent information register, written by the maintenance service (the first record is needed when a rule is created, before any completion).
 
 Dimensions:
 
-- Asset;
-- MaintenanceRule.
+- MaintenanceRule (the rule already belongs to one asset).
 
 Resources:
 
