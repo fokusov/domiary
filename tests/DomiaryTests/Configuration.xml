@@ -71,6 +71,7 @@
 			<CommonModule>Тесты_КонтрольПадения</CommonModule>
 			<CommonModule>Тесты_ПилотКлиентСервер</CommonModule>
 			<CommonModule>Тесты_ПовторяемостьКлиентСервер</CommonModule>
+			<CommonModule>Тесты_Хроника</CommonModule>
 		</ChildObjects>
 	</Configuration>
 </MetaDataObject>
