@@ -25,8 +25,8 @@ If a task conflicts with these documents, stop and ask Igor in the task file or 
 
 | Role | Who | Owns |
 |---|---|---|
-| Product Owner | Igor (human) | decisions, ADR approval, builds, device testing, merges, releases |
-| Tech Lead, main 1C developer | Claude | architecture, **all metadata changes**, services, forms, integration |
+| Product Owner | Igor (human) | decisions, ADR approval, builds, device testing, releases |
+| Tech Lead, main 1C developer | Claude | architecture, **all metadata changes**, services, forms, integration, merges after Igor's approval |
 | Reviewer, test author | Codex | PR review, unit tests for domain logic, pure domain functions, `tools/` scripts |
 | Content and docs | GLM | UI texts, user docs, fixtures, smoke-test checklists, templates |
 
@@ -40,11 +40,11 @@ Tasks live **locally** in `tasks/` (not tracked by git, see `tasks/README.md`). 
 
 ## Hard rules
 
-1. **Only Claude changes metadata.** That means anything that adds, removes or renames objects, attributes, forms, subsystems or touches `src/Configuration.xml`.
+1. **Only Claude changes metadata in `src/`.** That means anything that adds, removes or renames objects, attributes, forms, subsystems or touches `src/Configuration.xml`. Test extensions in `tests/` are not covered by this rule: Codex may create them.
    Other agents change BSL module text, tests, `tools/` and docs. If your task needs a new attribute, write that in the task file and stop.
 2. **One task, one branch, one PR.** Branch name: `<type>/<task-id>-<short-name>`, for example `feat/T-008-recurrence`.
    Never push to `main`.
-3. **Every PR is reviewed by a different model** before Igor merges it.
+3. **Every PR is reviewed by a different model** and approved by Igor in chat; then Claude merges it.
 4. **Never commit** the infobase (`base/`), build output (`pub/`, `*.apk`), signing keys (`*.keystore`, `*.jks`) or any secret.
 5. **Builds and device installs are done by Igor.** Agents do not run the mobile application builder and do not touch Igor's working infobase in `base/`.
 6. **Do not edit generated files** `src/ConfigDumpInfo.xml` and `src/DumpFilesIndex.txt`.

@@ -14,11 +14,11 @@ This file is the single source of truth for phase order. [PRD.md](PRD.md) §43 a
 - [x] Open-source repository
 - [x] Architecture document (initial draft)
 - [ ] 1C metadata/domain model
-- [ ] Navigation and UX map
+- [x] Navigation and UX map — [UX_MAP.md](UX_MAP.md)
 - [x] Target platform version: 1C:Enterprise 8.5 mobile platform
 - [x] Target OS decision: Android-first (iOS after v1)
 - [ ] MVP execution plan and roles — see [MVP_PLAN.md](MVP_PLAN.md)
-- [ ] Test strategy
+- [x] Test strategy — [ADR-007](adr/ADR-007-testing.md)
 - [ ] Build/release strategy
 
 ## Phase 1 — Home & assets
