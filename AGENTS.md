@@ -71,6 +71,7 @@ Known traps (found in spike T-001):
 - after `unica.form.compile` and `unica.form.add`, check that the form is registered in the object's `ChildObjects` only once.
 - the mobile application server has no event log: `ЗаписьЖурналаРегистрации` and `УровеньЖурналаРегистрации` do not compile there; put the reason into the exception text instead;
 - unica creates constants as `Строка(10)`: set the real type in XML before normalizing.
+- catalogs without a code (`CodeLength = 0`) must not list `StandardAttribute.Code` in `InputByString`: unica templates keep it and the load fails.
 
 ## Code rules (BSL)
 
