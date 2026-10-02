@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Документ</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<PictureField name="Просмотр" id="1">
+			<DataPath>АдресПросмотра</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<Width>30</Width>
+			<Height>12</Height>
+			<PictureSize>Proportionally</PictureSize>
+			<ContextMenu name="ПросмотрКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ПросмотрРасширеннаяПодсказка" id="3"/>
+		</PictureField>
+		<InputField name="Наименование" id="4">
+			<DataPath>Объект.Description</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Название</v8:content>
+				</v8:item>
+			</Title>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<InputField name="ТипДокумента" id="7">
+			<DataPath>Объект.ТипДокумента</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ТипДокументаКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ТипДокументаРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<InputField name="Предмет" id="10">
+			<DataPath>Объект.Предмет</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>К чему относится</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ПредметКонтекстноеМеню" id="11"/>
+			<ExtendedTooltip name="ПредметРасширеннаяПодсказка" id="12"/>
+		</InputField>
+		<InputField name="ДатаДокумента" id="13">
+			<DataPath>Объект.ДатаДокумента</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ДатаДокументаКонтекстноеМеню" id="14"/>
+			<ExtendedTooltip name="ДатаДокументаРасширеннаяПодсказка" id="15"/>
+		</InputField>
+		<InputField name="ДействуетДо" id="16">
+			<DataPath>Объект.ДействуетДо</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Действует до</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ДействуетДоКонтекстноеМеню" id="17"/>
+			<ExtendedTooltip name="ДействуетДоРасширеннаяПодсказка" id="18"/>
+		</InputField>
+		<InputField name="Заметка" id="19">
+			<DataPath>Объект.Заметка</DataPath>
+			<Height>3</Height>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="ЗаметкаКонтекстноеМеню" id="20"/>
+			<ExtendedTooltip name="ЗаметкаРасширеннаяПодсказка" id="21"/>
+		</InputField>
+		<UsualGroup name="ГруппаФайл" id="22">
+			<Group>Horizontal</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаФайлРасширеннаяПодсказка" id="23"/>
+			<ChildItems>
+				<LabelField name="ИмяФайла" id="24">
+					<DataPath>Объект.ИмяФайла</DataPath>
+					<ContextMenu name="ИмяФайлаКонтекстноеМеню" id="25"/>
+					<ExtendedTooltip name="ИмяФайлаРасширеннаяПодсказка" id="26"/>
+				</LabelField>
+				<Button name="ОткрытьФайл" id="27">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ОткрытьФайл</CommandName>
+					<ExtendedTooltip name="ОткрытьФайлРасширеннаяПодсказка" id="28"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="29">
+			<Type>
+				<v8:Type>cfg:CatalogObject.Вложения</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="АдресПросмотра" id="30">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОткрытьФайл" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ОткрытьФайлОбработка</Action>
+		</Command>
+	</Commands>
+</Form>

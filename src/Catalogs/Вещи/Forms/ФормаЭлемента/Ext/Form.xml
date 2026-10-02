@@ -10,10 +10,33 @@
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<InputField name="Наименование" id="1">
+		<UsualGroup name="ГруппаФото" id="1">
+			<Group>Horizontal</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаФотоРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+				<PictureField name="Фото" id="3">
+					<DataPath>АдресФото</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Width>20</Width>
+					<Height>8</Height>
+					<PictureSize>Proportionally</PictureSize>
+					<ContextMenu name="ФотоКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="ФотоРасширеннаяПодсказка" id="5"/>
+				</PictureField>
+				<Button name="ДобавитьФото" id="6">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ДобавитьФото</CommandName>
+					<ExtendedTooltip name="ДобавитьФотоРасширеннаяПодсказка" id="7"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Наименование" id="8">
 			<DataPath>Объект.Description</DataPath>
 			<Title>
 				<v8:item>
@@ -28,10 +51,10 @@
 					<v8:content>Например: пылесос Dyson V8</v8:content>
 				</v8:item>
 			</InputHint>
-			<ContextMenu name="НаименованиеКонтекстноеМеню" id="2"/>
-			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="3"/>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="9"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="10"/>
 		</InputField>
-		<InputField name="Место" id="4">
+		<InputField name="Место" id="11">
 			<DataPath>Объект.Место</DataPath>
 			<Title>
 				<v8:item>
@@ -39,13 +62,13 @@
 					<v8:content>Где</v8:content>
 				</v8:item>
 			</Title>
-			<ContextMenu name="МестоКонтекстноеМеню" id="5"/>
-			<ExtendedTooltip name="МестоРасширеннаяПодсказка" id="6"/>
+			<ContextMenu name="МестоКонтекстноеМеню" id="12"/>
+			<ExtendedTooltip name="МестоРасширеннаяПодсказка" id="13"/>
 			<Events>
 				<Event name="OnChange">МестоПриИзменении</Event>
 			</Events>
 		</InputField>
-		<UsualGroup name="ГруппаПодробнее" id="7">
+		<UsualGroup name="ГруппаПодробнее" id="14">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -55,29 +78,29 @@
 			<Group>Vertical</Group>
 			<Behavior>Collapsible</Behavior>
 			<ShowTitle>true</ShowTitle>
-			<ExtendedTooltip name="ГруппаПодробнееРасширеннаяПодсказка" id="8"/>
+			<ExtendedTooltip name="ГруппаПодробнееРасширеннаяПодсказка" id="15"/>
 			<ChildItems>
-				<InputField name="Категория" id="9">
+				<InputField name="Категория" id="16">
 					<DataPath>Объект.Категория</DataPath>
-					<ContextMenu name="КатегорияКонтекстноеМеню" id="10"/>
-					<ExtendedTooltip name="КатегорияРасширеннаяПодсказка" id="11"/>
+					<ContextMenu name="КатегорияКонтекстноеМеню" id="17"/>
+					<ExtendedTooltip name="КатегорияРасширеннаяПодсказка" id="18"/>
 				</InputField>
-				<InputField name="Статус" id="12">
+				<InputField name="Статус" id="19">
 					<DataPath>Объект.Статус</DataPath>
-					<ContextMenu name="СтатусКонтекстноеМеню" id="13"/>
-					<ExtendedTooltip name="СтатусРасширеннаяПодсказка" id="14"/>
+					<ContextMenu name="СтатусКонтекстноеМеню" id="20"/>
+					<ExtendedTooltip name="СтатусРасширеннаяПодсказка" id="21"/>
 				</InputField>
-				<InputField name="Производитель" id="15">
+				<InputField name="Производитель" id="22">
 					<DataPath>Объект.Производитель</DataPath>
-					<ContextMenu name="ПроизводительКонтекстноеМеню" id="16"/>
-					<ExtendedTooltip name="ПроизводительРасширеннаяПодсказка" id="17"/>
+					<ContextMenu name="ПроизводительКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="ПроизводительРасширеннаяПодсказка" id="24"/>
 				</InputField>
-				<InputField name="Модель" id="18">
+				<InputField name="Модель" id="25">
 					<DataPath>Объект.Модель</DataPath>
-					<ContextMenu name="МодельКонтекстноеМеню" id="19"/>
-					<ExtendedTooltip name="МодельРасширеннаяПодсказка" id="20"/>
+					<ContextMenu name="МодельКонтекстноеМеню" id="26"/>
+					<ExtendedTooltip name="МодельРасширеннаяПодсказка" id="27"/>
 				</InputField>
-				<InputField name="СерийныйНомер" id="21">
+				<InputField name="СерийныйНомер" id="28">
 					<DataPath>Объект.СерийныйНомер</DataPath>
 					<Title>
 						<v8:item>
@@ -85,10 +108,10 @@
 							<v8:content>Серийный номер</v8:content>
 						</v8:item>
 					</Title>
-					<ContextMenu name="СерийныйНомерКонтекстноеМеню" id="22"/>
-					<ExtendedTooltip name="СерийныйНомерРасширеннаяПодсказка" id="23"/>
+					<ContextMenu name="СерийныйНомерКонтекстноеМеню" id="29"/>
+					<ExtendedTooltip name="СерийныйНомерРасширеннаяПодсказка" id="30"/>
 				</InputField>
-				<InputField name="ОбъектНедвижимости" id="24">
+				<InputField name="ОбъектНедвижимости" id="31">
 					<DataPath>Объект.ОбъектНедвижимости</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<Title>
@@ -97,10 +120,10 @@
 							<v8:content>Дом</v8:content>
 						</v8:item>
 					</Title>
-					<ContextMenu name="ОбъектНедвижимостиКонтекстноеМеню" id="25"/>
-					<ExtendedTooltip name="ОбъектНедвижимостиРасширеннаяПодсказка" id="26"/>
+					<ContextMenu name="ОбъектНедвижимостиКонтекстноеМеню" id="32"/>
+					<ExtendedTooltip name="ОбъектНедвижимостиРасширеннаяПодсказка" id="33"/>
 				</InputField>
-				<InputField name="ОценочнаяСтоимость" id="27">
+				<InputField name="ОценочнаяСтоимость" id="34">
 					<DataPath>Объект.ОценочнаяСтоимость</DataPath>
 					<Title>
 						<v8:item>
@@ -108,10 +131,10 @@
 							<v8:content>Сколько стоит сейчас</v8:content>
 						</v8:item>
 					</Title>
-					<ContextMenu name="ОценочнаяСтоимостьКонтекстноеМеню" id="28"/>
-					<ExtendedTooltip name="ОценочнаяСтоимостьРасширеннаяПодсказка" id="29"/>
+					<ContextMenu name="ОценочнаяСтоимостьКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="ОценочнаяСтоимостьРасширеннаяПодсказка" id="36"/>
 				</InputField>
-				<InputField name="СсылкаПроизводителя" id="30">
+				<InputField name="СсылкаПроизводителя" id="37">
 					<DataPath>Объект.СсылкаПроизводителя</DataPath>
 					<Title>
 						<v8:item>
@@ -119,26 +142,199 @@
 							<v8:content>Сайт производителя</v8:content>
 						</v8:item>
 					</Title>
-					<ContextMenu name="СсылкаПроизводителяКонтекстноеМеню" id="31"/>
-					<ExtendedTooltip name="СсылкаПроизводителяРасширеннаяПодсказка" id="32"/>
+					<ContextMenu name="СсылкаПроизводителяКонтекстноеМеню" id="38"/>
+					<ExtendedTooltip name="СсылкаПроизводителяРасширеннаяПодсказка" id="39"/>
 				</InputField>
-				<InputField name="Заметка" id="33">
+				<InputField name="Заметка" id="40">
 					<DataPath>Объект.Заметка</DataPath>
 					<Height>3</Height>
 					<MultiLine>true</MultiLine>
-					<ContextMenu name="ЗаметкаКонтекстноеМеню" id="34"/>
-					<ExtendedTooltip name="ЗаметкаРасширеннаяПодсказка" id="35"/>
+					<ContextMenu name="ЗаметкаКонтекстноеМеню" id="41"/>
+					<ExtendedTooltip name="ЗаметкаРасширеннаяПодсказка" id="42"/>
 				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаДокументы" id="43">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<ShowTitle>true</ShowTitle>
+			<ExtendedTooltip name="ГруппаДокументыРасширеннаяПодсказка" id="44"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаКомандыДокументов" id="45">
+					<Group>Horizontal</Group>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаКомандыДокументовРасширеннаяПодсказка" id="46"/>
+					<ChildItems>
+						<Button name="СфотографироватьДокумент" id="47">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.СфотографироватьДокумент</CommandName>
+							<ExtendedTooltip name="СфотографироватьДокументРасширеннаяПодсказка" id="48"/>
+						</Button>
+						<Button name="ДобавитьФайл" id="49">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.ДобавитьФайл</CommandName>
+							<ExtendedTooltip name="ДобавитьФайлРасширеннаяПодсказка" id="50"/>
+						</Button>
+						<Button name="СканироватьДокумент" id="51">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.СканироватьДокумент</CommandName>
+							<ExtendedTooltip name="СканироватьДокументРасширеннаяПодсказка" id="52"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<Table name="Документы" id="53">
+					<DataPath>Документы</DataPath>
+					<AutoRefresh>false</AutoRefresh>
+					<AutoRefreshPeriod>60</AutoRefreshPeriod>
+					<Period>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</Period>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<RestoreCurrentRow>false</RestoreCurrentRow>
+					<TopLevelParent xsi:nil="true"/>
+					<ShowRoot>true</ShowRoot>
+					<AllowRootChoice>false</AllowRootChoice>
+					<UpdateOnDataChange>Auto</UpdateOnDataChange>
+					<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+					<ContextMenu name="ДокументыКонтекстноеМеню" id="54"/>
+					<AutoCommandBar name="ДокументыКоманднаяПанель" id="55"/>
+					<ExtendedTooltip name="ДокументыРасширеннаяПодсказка" id="56"/>
+					<SearchStringAddition name="ДокументыСтрокаПоиска" id="57">
+						<AdditionSource>
+							<Item>Документы</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ДокументыСтрокаПоискаКонтекстноеМеню" id="58"/>
+						<ExtendedTooltip name="ДокументыСтрокаПоискаРасширеннаяПодсказка" id="59"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ДокументыСостояниеПросмотра" id="60">
+						<AdditionSource>
+							<Item>Документы</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ДокументыСостояниеПросмотраКонтекстноеМеню" id="61"/>
+						<ExtendedTooltip name="ДокументыСостояниеПросмотраРасширеннаяПодсказка" id="62"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ДокументыУправлениеПоиском" id="63">
+						<AdditionSource>
+							<Item>Документы</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ДокументыУправлениеПоискомКонтекстноеМеню" id="64"/>
+						<ExtendedTooltip name="ДокументыУправлениеПоискомРасширеннаяПодсказка" id="65"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<InputField name="ДокументыНаименование" id="66">
+							<DataPath>Документы.Description</DataPath>
+							<ContextMenu name="ДокументыНаименованиеКонтекстноеМеню" id="67"/>
+							<ExtendedTooltip name="ДокументыНаименованиеРасширеннаяПодсказка" id="68"/>
+						</InputField>
+						<InputField name="ДокументыТипДокумента" id="69">
+							<DataPath>Документы.ТипДокумента</DataPath>
+							<ContextMenu name="ДокументыТипДокументаКонтекстноеМеню" id="70"/>
+							<ExtendedTooltip name="ДокументыТипДокументаРасширеннаяПодсказка" id="71"/>
+						</InputField>
+						<InputField name="ДокументыДатаДокумента" id="72">
+							<DataPath>Документы.ДатаДокумента</DataPath>
+							<ContextMenu name="ДокументыДатаДокументаКонтекстноеМеню" id="73"/>
+							<ExtendedTooltip name="ДокументыДатаДокументаРасширеннаяПодсказка" id="74"/>
+						</InputField>
+					</ChildItems>
+				</Table>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>
 	<Attributes>
-		<Attribute name="Объект" id="36">
+		<Attribute name="Объект" id="75">
 			<Type>
 				<v8:Type>cfg:CatalogObject.Вещи</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<SavedData>true</SavedData>
 		</Attribute>
+		<Attribute name="АдресФото" id="76">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Документы" id="77">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<MainTable>Catalog.Вложения</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ДобавитьФото" id="78">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Фото</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.Picture</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ДобавитьФотоОбработка</Action>
+		</Command>
+		<Command name="СфотографироватьДокумент" id="79">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сфотографировать</v8:content>
+				</v8:item>
+			</Title>
+			<Action>СфотографироватьДокументОбработка</Action>
+		</Command>
+		<Command name="ДобавитьФайл" id="80">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить файл</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ДобавитьФайлОбработка</Action>
+		</Command>
+		<Command name="СканироватьДокумент" id="81">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сканировать</v8:content>
+				</v8:item>
+			</Title>
+			<Action>СканироватьДокументОбработка</Action>
+		</Command>
+	</Commands>
 </Form>
