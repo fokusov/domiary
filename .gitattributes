@@ -1,0 +1,7 @@
+# 1C configuration dump: keep files byte-for-byte as the platform writes them
+src/** -text
+
+# Binary assets
+*.png binary
+*.jpg binary
+*.zip binary
