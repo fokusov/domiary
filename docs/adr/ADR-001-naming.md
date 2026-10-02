@@ -1,6 +1,6 @@
 # ADR-001 — Именование метаданных и кода
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-10-02
 **Decider:** Igor Fokusov
 
