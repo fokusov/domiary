@@ -66,6 +66,7 @@
 		<ChildObjects>
 			<Language>Русский</Language>
 			<CommonModule>Тесты_ПилотКлиентСервер</CommonModule>
+			<CommonModule>Тесты_ПовторяемостьКлиентСервер</CommonModule>
 		</ChildObjects>
 	</Configuration>
 </MetaDataObject>
