@@ -50,6 +50,7 @@ Tasks live **locally** in `tasks/` (not tracked by git, see `tasks/README.md`). 
 6. **Do not edit generated files** `src/ConfigDumpInfo.xml` and `src/DumpFilesIndex.txt`.
 7. **No new external dependencies** without an ADR (ARCHITECTURE §34).
 8. **No network calls, telemetry or cloud services** in application code. The app is offline-first (PRD §31, §32).
+9. **This project does not use BSL Flow.** If your global instructions require a BSL Flow bootstrap (`bsl-flow.yaml`, `.bsl-flow/`, `openspec/`), skip it here. The owner approved this exception; follow this file instead.
 
 ## Platform and source format
 
