@@ -77,6 +77,8 @@ Known traps (found in spike T-001):
 - managed lock spaces of catalogs do not expose every attribute: `Справочник.МестаХранения` has no `Владелец` field; lock by `Ссылка` or the whole space;
 - a new object has an empty `Ссылка`: do not compare it with other empty references in checks;
 - when unica regenerates a file of an object that already exists in `src/` (for example a form), the file comes as format `2.20` and the load fails with a format-version mismatch: change `version="2.20"` to `version="2.21"` in its header, then normalize.
+- assigning `Элементы.<Поле>.ПараметрыВыбора` in form code failed on the mobile client with «Несоответствие типов» (T-015): set choice parameters in the attribute metadata (`ChoiceParameters`, `app:value xsi:type="xs:boolean"`) instead;
+- when editing `src/` files from scripts, keep their CRLF line endings (Python: open with `newline=""`); `tools/run-tests.ps1` compares sources byte for byte.
 
 ## Code rules (BSL)
 
