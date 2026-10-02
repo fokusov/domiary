@@ -1,0 +1,48 @@
+name: Идея или предложение
+description: Предложение по улучшению Domiary
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Domiary — простой дневник дома, а не домашняя ERP. Идея должна помогать отвечать
+        хотя бы на один из четырёх вопросов: **что у меня есть**, **что с этим происходило**,
+        **что мне нужно сделать**, **какие обязательства и ресурсы у меня есть**.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Какая у вас проблема?
+      description: Опишите ситуацию из жизни, с которой приложение пока не справляется.
+      placeholder: "Например: я забываю, когда менял фильтр в кувшине, и не могу это нигде записать."
+    validations:
+      required: true
+
+  - type: textarea
+    id: scenario
+    attributes:
+      label: Как вы хотите, чтобы это работало?
+      description: "Ваш сценарий: что открываете, что нажимаете, что видите."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: product-question
+    attributes:
+      label: Какому вопросу продукта это помогает?
+      options:
+        - Что у меня есть?
+        - Что с этим происходило?
+        - Что мне нужно сделать?
+        - Какие обязательства и ресурсы у меня есть?
+        - Не относится ни к одному из вопросов
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Как вы решаете эту задачу сейчас?
+      description: Записки, заметки в телефоне, другое приложение. Не обязательно.
+    validations:
+      required: false
