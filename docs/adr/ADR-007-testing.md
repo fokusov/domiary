@@ -1,6 +1,6 @@
 # ADR-007 — Тестирование
 
-**Status:** Accepted (основной вариант — после проверки T-012)
+**Status:** Accepted (основной вариант подтверждён spike T-012: YAxUnit 25.12)
 **Date:** 2026-10-02
 **Decider:** Igor Fokusov
 

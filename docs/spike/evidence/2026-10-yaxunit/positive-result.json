@@ -1,0 +1,64 @@
+{
+  "startedAtUtc": "2026-10-02T15:07:05.2340338Z",
+  "target": "C:\\DEV\\domiary-wt\\T-012\\.build\\ib",
+  "prepare": true,
+  "includeNegativeControl": false,
+  "platformExitCode": 0,
+  "yaxunitExitCode": 0,
+  "tests": 2,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "status": "PASS",
+  "platform": "8.5.1.1529",
+  "yaxunit": "25.12",
+  "testExtension": "0.1.0",
+  "sources": [
+    {
+      "sha256": "5E0E630443236838D91B17B8056235CA094EFEA60D6C021FF821F3CC46FB2804",
+      "path": "tests\\DomiaryTests\\Configuration.xml"
+    },
+    {
+      "sha256": "40BF73E6F6B973FAFBF186B708DCAE47B98BD4F721821EC4834B72AFA343DF51",
+      "path": "tests\\DomiaryTests\\CommonModules\\Тесты_ПилотКлиентСервер.xml"
+    },
+    {
+      "sha256": "C0496557FD78BC8AE35BA277B9851398F68DD76D6A678248A6526AA6BB00AA79",
+      "path": "tests\\DomiaryTests\\CommonModules\\Тесты_ПилотКлиентСервер\\Ext\\Module.bsl"
+    },
+    {
+      "sha256": "AC3FFC95FDC85A54BAE79734C51000E5B80CB7645CDDDDF0C8BF0D9EF0309AFC",
+      "path": "tests\\DomiaryTests\\Languages\\Русский.xml"
+    }
+  ],
+  "baseSources": [
+    {
+      "sha256": "BE72F5B02562256F45AFFF8A9CE0953E6F43EF97BDC7DC4DE8A7C4BC709E81FE",
+      "path": "src\\Configuration.xml"
+    },
+    {
+      "sha256": "2697FD997F25DD24DF4ADC9D624B4522242F104BA713C3B63162BB452D489807",
+      "path": "src\\Ext\\Logo.xml"
+    },
+    {
+      "sha256": "E560D5C08650E1DD2CE03E0DCE6325530A6B6CB73E4852D6A8A7E0AA898A37DC",
+      "path": "src\\Ext\\Logo\\Picture.png"
+    },
+    {
+      "sha256": "340E69BDFF32395D28C4A25A4CFA0B22A95130FBFAF39C570B41DCA222B33A21",
+      "path": "src\\Languages\\Русский.xml"
+    }
+  ],
+  "yaxunitAssetSha256": "805A2277C997A3C24BE0B0D080696479E91E4A15ED7E27AAF3991A7346522D70",
+  "loadedSourcesMatch": true,
+  "selection": [
+    "Тесты_ПилотКлиентСервер.ПроверкаСложения"
+  ],
+  "contexts": [
+    "КлиентУправляемоеПриложение",
+    "Сервер"
+  ],
+  "expectedTests": 2,
+  "finishedAtUtc": "2026-10-02T15:07:26.0345853Z",
+  "scriptExitCode": 0
+}
