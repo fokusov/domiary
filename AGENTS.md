@@ -76,7 +76,7 @@ Known traps (found in spike T-001):
 - object modules have `ПриЗаписи`, not `ПослеЗаписи` (that one exists only in forms); a wrongly named handler compiles and silently never runs;
 - catalog objects have no deletion-mark event (`ПриУстановкеПометкиУдаления` does not exist): react to a new mark in `ПередЗаписью` (`ПометкаУдаления И НЕ Ссылка.ПометкаУдаления`);
 - check parameter types of `СредстваМультимедиа` methods in the syntax help: `СделатьФотоснимок` takes `РазрешениеКамерыУстройства`, not a number; type errors there appear only on the device;
-- `unica.form.compile` silently drops `query`, `filter` and `order` of a `DynamicList` attribute: check `ManualQuery`/`QueryText` in the generated XML; column paths of a manual query use the query aliases, not `Description`;
+- `unica.form.compile` silently drops `query`, `filter` and `order` of a `DynamicList` attribute: check `ManualQuery`/`QueryText` in the generated XML; column paths of a manual query use the query aliases, not `Description`; do not put `УПОРЯДОЧИТЬ ПО` into a dynamic list query (the load fails with «Неверный путь к данным»), set the order in `ListSettings`;
 - managed lock spaces of catalogs do not expose every attribute: `Справочник.МестаХранения` has no `Владелец` field; lock by `Ссылка` or the whole space;
 - a new object has an empty `Ссылка`: do not compare it with other empty references in checks;
 - when unica regenerates a file of an object that already exists in `src/` (for example a form), the file comes as format `2.20` and the load fails with a format-version mismatch: change `version="2.20"` to `version="2.21"` in its header, then normalize.

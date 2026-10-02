@@ -54,7 +54,7 @@
 			</SearchControlAddition>
 			<ChildItems>
 				<InputField name="Наименование" id="14">
-					<DataPath>Список.Description</DataPath>
+					<DataPath>Список.Наименование</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -107,8 +107,18 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
-				<DynamicDataRead>false</DynamicDataRead>
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	Вложения.Ссылка КАК Ссылка,
+	Вложения.Наименование КАК Наименование,
+	Вложения.ТипДокумента КАК ТипДокумента,
+	Вложения.Предмет КАК Предмет,
+	Вложения.ДатаДокумента КАК ДатаДокумента
+ИЗ
+	Справочник.Вложения КАК Вложения
+ГДЕ
+	НЕ Вложения.ПометкаУдаления</QueryText>
 				<MainTable>Catalog.Вложения</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -116,6 +126,10 @@
 						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
 					</dcsset:filter>
 					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>ДатаДокумента</dcsset:field>
+							<dcsset:orderType>Desc</dcsset:orderType>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
