@@ -46,6 +46,21 @@
   (см. ARCHITECTURE §10).
 - В начале файла `"formatVersion": 1` и `"description"`.
 
+Часть ключей отличается от концептуальных имён ARCHITECTURE (короче или не
+совпадает падежно), соответствие такое:
+
+| Ключ в JSON | Концептуальное имя (ARCHITECTURE) |
+|---|---|
+| `address` | `AddressText` (§6.1, Properties) |
+| `locations[].type` | `LocationType` (§6.2, Locations) |
+| `maintenanceRules[].title` | `MaintenanceType` (§6.9, MaintenanceRules) |
+| `recurrence` | `RecurrenceRule` (§10) |
+| `readingRecurrence` | `ReadingRecurrenceRule` (§6.10, Meters; §10) |
+| `notes`, а также `comment` (показания) и `note` (пополнения, возвраты) | `Notes` |
+
+Остальные ключи (`name`, `amount`, `currency`, `initialAmount`, `targetAmount`
+и т. д.) совпадают с концептуальными именами ARCHITECTURE напрямую.
+
 ## Инварианты (их проверяет скрипт)
 
 - `id` уникальны внутри каждой секции и глобально.

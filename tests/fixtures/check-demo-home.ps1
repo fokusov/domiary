@@ -48,6 +48,17 @@ function Test-Recurrence {
         ($Recurrence.count -ge 1)
 }
 
+function Test-Number {
+    param($Value)
+    if ($Value -isnot [double] -and $Value -isnot [int] -and $Value -isnot [long]) { return $false }
+    return [double]::IsFinite([double]$Value)
+}
+
+function Test-PositiveNumber {
+    param($Value)
+    return (Test-Number $Value) -and ($Value -gt 0)
+}
+
 # --- Разбор файла -----------------------------------------------------------
 
 if (-not (Test-Path $Path)) {
@@ -138,7 +149,7 @@ foreach ($l in $locations) {
 
 $assetStatuses = 'Используется', 'Хранится', 'Требует ремонта', 'Передано', 'Списано', 'Продано'
 $today = (Get-Date).Date
-$windowStart = [datetime]'2020-01-01'
+$windowStart = $today.AddYears(-6)
 
 foreach ($a in $assets) {
     $id = $a['id']
@@ -160,10 +171,10 @@ foreach ($a in $assets) {
     else {
         $purchaseDate = ConvertTo-Date $a['purchaseDate']
         if ($purchaseDate -lt $windowStart -or $purchaseDate -gt $today) {
-            Add-Error "asset '$id': purchaseDate вне диапазона ($windowStart .. $today)"
+            Add-Error "asset '$id': purchaseDate вне диапазона ($($windowStart.ToString('yyyy-MM-dd')) .. $($today.ToString('yyyy-MM-dd')))"
         }
     }
-    if (-not ($a['purchasePrice'] -is [int] -or $a['purchasePrice'] -is [long] -or $a['purchasePrice'] -is [double]) -or $a['purchasePrice'] -lt 0) {
+    if (-not (Test-Number $a['purchasePrice']) -or $a['purchasePrice'] -lt 0) {
         Add-Error "asset '$id': purchasePrice должен быть неотрицательным числом"
     }
     if ($assetStatuses -notcontains $a['status']) {
@@ -215,6 +226,9 @@ foreach ($m in $meters) {
     if (-not (Test-Recurrence $m['readingRecurrence'])) {
         Add-Error "meter '$id': некорректная периодичность снятия показаний"
     }
+    if (-not (Test-IsoDate $m['nextReadingDate'])) {
+        Add-Error "meter '$id': nextReadingDate не в формате ISO 8601"
+    }
     $readings = @($m['readings'])
     if ($readings.Count -ne 12) {
         Add-Error "meter '$id': ожидается 12 показаний, найдено $($readings.Count)"
@@ -224,6 +238,12 @@ foreach ($m in $meters) {
     foreach ($r in $readings) {
         if (-not (Test-IsoDate $r['date'])) {
             Add-Error "meter '$id': дата показания '$($r['date'])' не в формате ISO 8601"; continue
+        }
+        if (-not (Test-Number $r['value'])) {
+            Add-Error "meter '$id': показание за $($r['date']) должно быть числом"; continue
+        }
+        if ($null -ne $r['consumption'] -and -not (Test-Number $r['consumption'])) {
+            Add-Error "meter '$id': consumption за $($r['date']) должен быть числом или null"; continue
         }
         $d = ConvertTo-Date $r['date']
         if ($null -ne $prevDate -and $d -le $prevDate) {
@@ -253,7 +273,7 @@ foreach ($m in $meters) {
 foreach ($o in $data['obligations']) {
     $id = $o['id']
     if (-not (Test-Recurrence $o['recurrence'])) { Add-Error "obligation '$id': некорректная периодичность" }
-    if (-not ($o['amount'] -gt 0)) { Add-Error "obligation '$id': amount должен быть положительным" }
+    if (-not (Test-PositiveNumber $o['amount'])) { Add-Error "obligation '$id': amount должен быть положительным числом" }
     if ($null -ne $o['property'] -and $propertyIds -notcontains $o['property']) {
         Add-Error "obligation '$id': property '$($o['property'])' не найден"
     }
@@ -264,10 +284,10 @@ foreach ($o in $data['obligations']) {
 
 foreach ($g in $data['savingsGoals']) {
     $id = $g['id']
-    if (-not ($g['targetAmount'] -gt 0)) { Add-Error "savingsGoal '$id': targetAmount должен быть положительным" }
+    if (-not (Test-PositiveNumber $g['targetAmount'])) { Add-Error "savingsGoal '$id': targetAmount должен быть положительным числом" }
     if (-not (Test-IsoDate $g['targetDate'])) { Add-Error "savingsGoal '$id': targetDate не в формате ISO 8601" }
     $pc = $g['plannedContribution']
-    if ($null -eq $pc -or -not ($pc['amount'] -gt 0) -or -not (Test-Recurrence $pc['recurrence'])) {
+    if ($null -eq $pc -or -not (Test-PositiveNumber $pc['amount']) -or -not (Test-Recurrence $pc['recurrence'])) {
         Add-Error "savingsGoal '$id': некорректное плановое пополнение"
     }
     $prevDate = $null
@@ -277,7 +297,7 @@ foreach ($g in $data['savingsGoals']) {
         if ($null -ne $prevDate -and $d -le $prevDate) {
             Add-Error "savingsGoal '$id': даты пополнений не возрастают ($($c['date']))"
         }
-        if (-not ($c['amount'] -gt 0)) { Add-Error "savingsGoal '$id': сумма пополнения должна быть положительной" }
+        if (-not (Test-PositiveNumber $c['amount'])) { Add-Error "savingsGoal '$id': сумма пополнения должна быть положительным числом" }
         $prevDate = $d
     }
 }
@@ -289,20 +309,22 @@ foreach ($dbt in $data['debts']) {
     if (@('Мне должны', 'Я должен') -notcontains $dbt['direction']) {
         Add-Error "debt '$id': неизвестное направление '$($dbt['direction'])'"
     }
-    if (-not ($dbt['initialAmount'] -gt 0)) { Add-Error "debt '$id': initialAmount должен быть положительным" }
+    if (-not (Test-IsoDate $dbt['date'])) { Add-Error "debt '$id': date не в формате ISO 8601" }
+    if (-not (Test-IsoDate $dbt['dueDate'])) { Add-Error "debt '$id': dueDate не в формате ISO 8601" }
+    if (-not (Test-PositiveNumber $dbt['initialAmount'])) { Add-Error "debt '$id': initialAmount должен быть положительным числом" }
     $prevDate = $null
     $repaid = 0
     foreach ($r in @($dbt['repayments'])) {
         if (-not (Test-IsoDate $r['date'])) { Add-Error "debt '$id': дата возврата не в формате ISO 8601"; continue }
+        if (-not (Test-PositiveNumber $r['amount'])) { Add-Error "debt '$id': сумма возврата должна быть положительным числом"; continue }
         $d = ConvertTo-Date $r['date']
         if ($null -ne $prevDate -and $d -le $prevDate) {
             Add-Error "debt '$id': даты возвратов не возрастают ($($r['date']))"
         }
-        if (-not ($r['amount'] -gt 0)) { Add-Error "debt '$id': сумма возврата должна быть положительной" }
         $repaid += $r['amount']
         $prevDate = $d
     }
-    if ($repaid -gt $dbt['initialAmount']) {
+    if ((Test-Number $dbt['initialAmount']) -and $repaid -gt $dbt['initialAmount']) {
         Add-Error "debt '$id': сумма возвратов ($repaid) больше initialAmount ($($dbt['initialAmount']))"
     }
 }
@@ -314,7 +336,7 @@ foreach ($pp in $data['plannedPurchases']) {
     if (@('Высокий', 'Средний', 'Низкий') -notcontains $pp['priority']) {
         Add-Error "plannedPurchase '$id': неизвестный приоритет '$($pp['priority'])'"
     }
-    if (-not ($pp['estimatedCost'] -gt 0)) { Add-Error "plannedPurchase '$id': estimatedCost должен быть положительным" }
+    if (-not (Test-PositiveNumber $pp['estimatedCost'])) { Add-Error "plannedPurchase '$id': estimatedCost должен быть положительным числом" }
     if (-not (Test-IsoDate $pp['targetDate'])) { Add-Error "plannedPurchase '$id': targetDate не в формате ISO 8601" }
     if ($null -ne $pp['savingsGoal'] -and $goalIds -notcontains $pp['savingsGoal']) {
         Add-Error "plannedPurchase '$id': savingsGoal '$($pp['savingsGoal'])' не найден"
@@ -352,7 +374,13 @@ Write-Output ''
 Write-Output "Состав: properties=$(@($properties).Count), locations=$(@($locations).Count), assets=$(@($assets).Count), maintenanceRules=$(@($rules).Count), meters=$(@($meters).Count), obligations=$(@($data['obligations']).Count), savingsGoals=$(@($data['savingsGoals']).Count), debts=$(@($data['debts']).Count), plannedPurchases=$(@($data['plannedPurchases']).Count)"
 
 $readingsTotal = ($meters | ForEach-Object { @($_['readings']).Count } | Measure-Object -Sum).Sum
-$contribTotal = ($data['savingsGoals'] | ForEach-Object { (@($_['contributions']) | Measure-Object -Sum -Property amount).Sum } | Measure-Object -Sum).Sum
+# Суммируем только корректные суммы: испорченная строка не должна ломать отчёт.
+$contribTotal = 0
+foreach ($g in $data['savingsGoals']) {
+    foreach ($c in @($g['contributions'])) {
+        if (Test-Number $c['amount']) { $contribTotal += $c['amount'] }
+    }
+}
 Write-Output "Показаний: $readingsTotal; суммарно пополнено: $contribTotal руб."
 
 Write-Output ''
