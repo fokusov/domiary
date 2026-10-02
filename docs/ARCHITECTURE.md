@@ -1826,7 +1826,7 @@ Finance remains intentionally lightweight.
 The following decisions should be resolved before or during Phase 0:
 
 1. ~~Exact target 1C platform version.~~ **Resolved:** 1C:Enterprise 8.5 mobile platform.
-2. Android-first vs Android+iOS from first public release.
+2. ~~Android-first vs Android+iOS from first public release.~~ **Resolved:** Android-first; iOS after v1.
 3. Source format and repository structure for configuration.
 4. Metadata naming prefix.
 5. Binary attachment storage strategy.
