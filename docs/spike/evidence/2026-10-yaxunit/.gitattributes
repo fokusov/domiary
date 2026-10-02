@@ -1,0 +1,3 @@
+# Preserve original runtime evidence, including mixed line endings in JUnit errors.
+*.xml -text
+*.json -text

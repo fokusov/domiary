@@ -1,0 +1,2 @@
+# Preserve the native 1C extension dump byte-for-byte, as src/ does.
+DomiaryTests/** -text

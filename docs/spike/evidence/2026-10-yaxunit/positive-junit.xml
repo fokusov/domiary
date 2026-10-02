@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite id="0" name="Тесты_ПилотКлиентСервер [КлиентУправляемоеПриложение]" classname="Тесты_ПилотКлиентСервер" tests="1" errors="0" skipped="0" failures="0" timestamp="2026-10-02T18:07:25" time="0.163" package="DomiaryTests" context="КлиентУправляемоеПриложение">
+		<testcase name="ПроверкаСложения" classname="Тесты_ПилотКлиентСервер.ПроверкаСложения" time="0.043" context="КлиентУправляемоеПриложение"/>
+		<properties>
+			<property name="context" value="КлиентУправляемоеПриложение"/>
+		</properties>
+	</testsuite>
+	<testsuite id="1" name="Тесты_ПилотКлиентСервер [Сервер]" classname="Тесты_ПилотКлиентСервер" tests="1" errors="0" skipped="0" failures="0" timestamp="2026-10-02T18:07:25" time="0.023" package="DomiaryTests" context="Сервер">
+		<testcase name="ПроверкаСложения" classname="Тесты_ПилотКлиентСервер.ПроверкаСложения" time="0.005" context="Сервер"/>
+		<properties>
+			<property name="context" value="Сервер"/>
+		</properties>
+	</testsuite>
+	<properties>
+		<property name="Конфигурация" value="Domiary"/>
+		<property name="ВерсияКонфигурации" value="0.0.1"/>
+		<property name="ВерсияПлатформы" value="8.5.1.1529"/>
+		<property name="ИнформационнаяСреда" value="DEV"/>
+		<property name="ТестовыйДвижок" value="YAXUNIT"/>
+		<property name="ВерсияТестовогоДвижка" value="25.12"/>
+		<property name="ВстроенныйЯзык" value="ru"/>
+		<property name="ОперационнаяСистемаКлиент" value="Windows"/>
+		<property name="АрхитектураКлиент" value="x86_64"/>
+		<property name="ОперационнаяСистемаСервер" value="Windows"/>
+		<property name="АрхитектураСервер" value="x86_64"/>
+		<property name="ФайловаяБаза" value="true"/>
+		<property name="ОбычноеПриложение" value="false"/>
+		<property name="ВебКлиент" value="false"/>
+		<property name="ТолстыйКлиент" value="false"/>
+		<property name="ВремяЗапуска" value="2026-10-02T18:07:24"/>
+		<property name="Расширения" value="    |DomiaryTests |0.1.0 |Нет |Нет |
+    |YAXUNIT |25.12 |Нет |Нет |"/>
+	</properties>
+</testsuites>
