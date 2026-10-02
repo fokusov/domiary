@@ -7,7 +7,18 @@
 		</v8:item>
 	</Title>
 	<AutoTitle>false</AutoTitle>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаПоказатьАрхив" id="1000">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ПоказатьАрхив</CommandName>
+				<ExtendedTooltip name="ФормаПоказатьАрхивРасширеннаяПодсказка" id="1001"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<Table name="Список" id="1">
 			<CommandBarLocation>None</CommandBarLocation>
@@ -119,4 +130,15 @@
 			</Settings>
 		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ПоказатьАрхив" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать архив</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ПоказатьАрхив</Action>
+		</Command>
+	</Commands>
 </Form>
