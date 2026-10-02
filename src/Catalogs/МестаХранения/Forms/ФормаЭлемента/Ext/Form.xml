@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Места</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="1">
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+				<InputField name="Владелец" id="3">
+					<DataPath>Объект.Owner</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ВладелецКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="ВладелецРасширеннаяПодсказка" id="5"/>
+				</InputField>
+				<InputField name="Наименование" id="6">
+					<DataPath>Объект.Description</DataPath>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="8"/>
+				</InputField>
+				<InputField name="Родитель" id="9">
+					<DataPath>Объект.Parent</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Входит в группу</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="РодительКонтекстноеМеню" id="10"/>
+					<ExtendedTooltip name="РодительРасширеннаяПодсказка" id="11"/>
+				</InputField>
+				<InputField name="ТипМеста" id="12">
+					<DataPath>Объект.ТипМеста</DataPath>
+					<ContextMenu name="ТипМестаКонтекстноеМеню" id="13"/>
+					<ExtendedTooltip name="ТипМестаРасширеннаяПодсказка" id="14"/>
+				</InputField>
+				<InputField name="Заметка" id="15">
+					<DataPath>Объект.Заметка</DataPath>
+					<ContextMenu name="ЗаметкаКонтекстноеМеню" id="16"/>
+					<ExtendedTooltip name="ЗаметкаРасширеннаяПодсказка" id="17"/>
+				</InputField>
+				<CheckBoxField name="Архив" id="18">
+					<DataPath>Объект.Архив</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<ContextMenu name="АрхивКонтекстноеМеню" id="19"/>
+					<ExtendedTooltip name="АрхивРасширеннаяПодсказка" id="20"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаДополнительныеРеквизиты" id="21">
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="ГруппаДополнительныеРеквизитыРасширеннаяПодсказка" id="22"/>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="23">
+			<Type>
+				<v8:Type>cfg:CatalogObject.МестаХранения</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

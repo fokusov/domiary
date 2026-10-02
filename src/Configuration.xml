@@ -274,12 +274,17 @@
 			<Subsystem>Задачи</Subsystem>
 			<Subsystem>Финансы</Subsystem>
 			<Subsystem>Еще</Subsystem>
+			<CommonModule>Дома</CommonModule>
 			<CommonModule>Миграции</CommonModule>
 			<CommonModule>ПовторяемостьКлиентСервер</CommonModule>
 			<CommonModule>Хроника</CommonModule>
 			<Constant>ДнейНапоминанияПоУмолчанию</Constant>
 			<Constant>ОсновнаяВалюта</Constant>
+			<Catalog>ОбъектыНедвижимости</Catalog>
+			<Catalog>МестаХранения</Catalog>
 			<Enum>ЕдиницыПовторения</Enum>
+			<Enum>ТипыОбъектовНедвижимости</Enum>
+			<Enum>ТипыМест</Enum>
 			<Enum>ТипыСобытийХроники</Enum>
 			<InformationRegister>СостояниеПриложения</InformationRegister>
 			<InformationRegister>Хроника</InformationRegister>
