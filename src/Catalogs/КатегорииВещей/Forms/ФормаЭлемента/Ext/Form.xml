@@ -3,7 +3,7 @@
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
-			<v8:content>Дома</v8:content>
+			<v8:content>Категории</v8:content>
 		</v8:item>
 	</Title>
 	<AutoTitle>false</AutoTitle>
@@ -27,38 +27,28 @@
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
 					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="5"/>
 				</InputField>
-				<InputField name="Тип" id="6">
-					<DataPath>Объект.Тип</DataPath>
-					<ContextMenu name="ТипКонтекстноеМеню" id="7"/>
-					<ExtendedTooltip name="ТипРасширеннаяПодсказка" id="8"/>
+				<InputField name="Родитель" id="6">
+					<DataPath>Объект.Parent</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Входит в</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="РодительКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="РодительРасширеннаяПодсказка" id="8"/>
 				</InputField>
-				<InputField name="Адрес" id="9">
-					<DataPath>Объект.Адрес</DataPath>
-					<ContextMenu name="АдресКонтекстноеМеню" id="10"/>
-					<ExtendedTooltip name="АдресРасширеннаяПодсказка" id="11"/>
-				</InputField>
-				<InputField name="Заметка" id="12">
-					<DataPath>Объект.Заметка</DataPath>
-					<ContextMenu name="ЗаметкаКонтекстноеМеню" id="13"/>
-					<ExtendedTooltip name="ЗаметкаРасширеннаяПодсказка" id="14"/>
-				</InputField>
-				<CheckBoxField name="Архив" id="15">
-					<DataPath>Объект.Архив</DataPath>
-					<TitleLocation>Right</TitleLocation>
-					<ContextMenu name="АрхивКонтекстноеМеню" id="16"/>
-					<ExtendedTooltip name="АрхивРасширеннаяПодсказка" id="17"/>
-				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>
-		<UsualGroup name="ГруппаДополнительныеРеквизиты" id="18">
+		<UsualGroup name="ГруппаДополнительныеРеквизиты" id="9">
 			<Group>Vertical</Group>
-			<ExtendedTooltip name="ГруппаДополнительныеРеквизитыРасширеннаяПодсказка" id="19"/>
+			<ExtendedTooltip name="ГруппаДополнительныеРеквизитыРасширеннаяПодсказка" id="10"/>
 		</UsualGroup>
 	</ChildItems>
 	<Attributes>
-		<Attribute name="Объект" id="20">
+		<Attribute name="Объект" id="11">
 			<Type>
-				<v8:Type>cfg:CatalogObject.ОбъектыНедвижимости</v8:Type>
+				<v8:Type>cfg:CatalogObject.КатегорииВещей</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<SavedData>true</SavedData>

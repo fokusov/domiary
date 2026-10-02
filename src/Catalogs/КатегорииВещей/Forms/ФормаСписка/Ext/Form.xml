@@ -3,25 +3,16 @@
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
-			<v8:content>Дома</v8:content>
+			<v8:content>Категории</v8:content>
 		</v8:item>
 	</Title>
 	<AutoTitle>false</AutoTitle>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
-		<ChildItems>
-			<Button name="ФормаПоказатьАрхив" id="1000">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.ПоказатьАрхив</CommandName>
-				<ExtendedTooltip name="ФормаПоказатьАрхивРасширеннаяПодсказка" id="1001"/>
-			</Button>
-		</ChildItems>
-	</AutoCommandBar>
-	<Events>
-		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
-	</Events>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<ChildItems>
 		<Table name="Список" id="1">
 			<CommandBarLocation>None</CommandBarLocation>
+			<InitialTreeView>ExpandTopLevel</InitialTreeView>
+			<EnableDrag>true</EnableDrag>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
 			<AutoRefresh>false</AutoRefresh>
@@ -77,39 +68,19 @@
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="15"/>
 					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="16"/>
 				</LabelField>
-				<LabelField name="Тип" id="17">
-					<DataPath>Список.Тип</DataPath>
-					<ContextMenu name="ТипКонтекстноеМеню" id="18"/>
-					<ExtendedTooltip name="ТипРасширеннаяПодсказка" id="19"/>
-				</LabelField>
-				<LabelField name="Адрес" id="20">
-					<DataPath>Список.Адрес</DataPath>
-					<ContextMenu name="АдресКонтекстноеМеню" id="21"/>
-					<ExtendedTooltip name="АдресРасширеннаяПодсказка" id="22"/>
-				</LabelField>
-				<LabelField name="Заметка" id="23">
-					<DataPath>Список.Заметка</DataPath>
-					<ContextMenu name="ЗаметкаКонтекстноеМеню" id="24"/>
-					<ExtendedTooltip name="ЗаметкаРасширеннаяПодсказка" id="25"/>
-				</LabelField>
-				<LabelField name="Архив" id="26">
-					<DataPath>Список.Архив</DataPath>
-					<ContextMenu name="АрхивКонтекстноеМеню" id="27"/>
-					<ExtendedTooltip name="АрхивРасширеннаяПодсказка" id="28"/>
-				</LabelField>
-				<LabelField name="Ссылка" id="29">
+				<LabelField name="Ссылка" id="17">
 					<DataPath>Список.Ref</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>
-					<ContextMenu name="СсылкаКонтекстноеМеню" id="30"/>
-					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="31"/>
+					<ContextMenu name="СсылкаКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="19"/>
 				</LabelField>
 			</ChildItems>
 		</Table>
 	</ChildItems>
 	<Attributes>
-		<Attribute name="Список" id="32">
+		<Attribute name="Список" id="20">
 			<Type>
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
@@ -117,7 +88,7 @@
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>false</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
-				<MainTable>Catalog.ОбъектыНедвижимости</MainTable>
+				<MainTable>Catalog.КатегорииВещей</MainTable>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
@@ -137,15 +108,4 @@
 			</Settings>
 		</Attribute>
 	</Attributes>
-	<Commands>
-		<Command name="ПоказатьАрхив" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Показать архив</v8:content>
-				</v8:item>
-			</Title>
-			<Action>ПоказатьАрхив</Action>
-		</Command>
-	</Commands>
 </Form>

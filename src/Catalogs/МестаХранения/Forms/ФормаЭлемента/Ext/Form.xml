@@ -18,12 +18,23 @@
 			<ChildItems>
 				<InputField name="Владелец" id="3">
 					<DataPath>Объект.Owner</DataPath>
-					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дом</v8:content>
+						</v8:item>
+					</Title>
 					<ContextMenu name="ВладелецКонтекстноеМеню" id="4"/>
 					<ExtendedTooltip name="ВладелецРасширеннаяПодсказка" id="5"/>
 				</InputField>
 				<InputField name="Наименование" id="6">
 					<DataPath>Объект.Description</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Название</v8:content>
+						</v8:item>
+					</Title>
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="7"/>
 					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="8"/>
 				</InputField>
@@ -32,7 +43,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Входит в группу</v8:content>
+							<v8:content>Внутри</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="РодительКонтекстноеМеню" id="10"/>
