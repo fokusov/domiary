@@ -18,6 +18,12 @@
 			<ChildItems>
 				<InputField name="Наименование" id="3">
 					<DataPath>Объект.Description</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Название</v8:content>
+						</v8:item>
+					</Title>
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
 					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="5"/>
 				</InputField>
@@ -26,7 +32,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Входит в группу</v8:content>
+							<v8:content>Входит в</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="РодительКонтекстноеМеню" id="7"/>
