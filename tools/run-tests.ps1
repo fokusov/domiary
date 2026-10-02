@@ -155,8 +155,19 @@ try {
         throw "Не найден модуль отрицательного контроля: $negativeControlModule"
     }
     $contexts = @('КлиентУправляемоеПриложение', 'Сервер')
+    $moduleContexts = @{}
+    foreach ($module in $modules) {
+        $metadata = [xml] (Get-Content -LiteralPath (Join-Path $testSource "CommonModules/$module.xml") -Raw -Encoding utf8)
+        $properties = $metadata.MetaDataObject.CommonModule.Properties
+        $available = @()
+        if ($properties.ClientManagedApplication -eq 'true') { $available += 'КлиентУправляемоеПриложение' }
+        if ($properties.Server -eq 'true') { $available += 'Сервер' }
+        if (-not $available.Count) { throw "Нет поддерживаемых контекстов модуля: $module" }
+        $moduleContexts[$module] = $available
+    }
     $summary.selection = $modules
     $summary.contexts = $contexts
+    $summary.moduleContexts = $moduleContexts
     $report = Join-Path $runPath 'junit.xml'
     $exitFile = Join-Path $runPath 'exit-code.txt'
     $config = Join-Path $runPath 'config.json'
@@ -197,22 +208,25 @@ try {
         @{ test = $_.GetAttribute('classname'); context = $_.GetAttribute('context') }
     })
     # Набор методов определяет YAxUnit, а не второй список в runner.
-    # Каждый выбранный модуль должен дать тесты, каждый тест — ровно два контекста.
+    # Каждый выбранный модуль должен дать тесты во всех контекстах его XML.
     $tests = @($cases | ForEach-Object { $_.GetAttribute('classname') } | Sort-Object -Unique)
     foreach ($module in $modules) {
         if (-not @($tests | Where-Object { $_.StartsWith($module + '.', [StringComparison]::Ordinal) }).Count) {
             throw "В JUnit нет тестов выбранного модуля: $module"
         }
     }
+    $expectedTests = 0
     foreach ($test in $tests) {
         $module = ($test -split '\.', 2)[0]
         if ($module -notin $modules) { throw "В JUnit незапрошенный тест: $test" }
         foreach ($context in $contexts) {
             $matches = @($cases | Where-Object { $_.GetAttribute('classname') -eq $test -and $_.GetAttribute('context') -eq $context })
-            if ($matches.Count -ne 1) { throw "Неверный состав JUnit: $test [$context]" }
+            $expected = if ($context -in $moduleContexts[$module]) { 1 } else { 0 }
+            if ($matches.Count -ne $expected) { throw "Неверный состав JUnit: $test [$context]" }
+            $expectedTests += $expected
         }
     }
-    $summary.expectedTests = $tests.Count * $contexts.Count
+    $summary.expectedTests = $expectedTests
     if ($cases.Count -ne $summary.expectedTests) { throw "Ожидалось $($summary.expectedTests) выполнений, получено $($cases.Count)." }
     # Ошибки чтения набора могут быть отражены в атрибутах suite, а не только testcase.
     foreach ($suite in $document.SelectNodes('//testsuite')) {

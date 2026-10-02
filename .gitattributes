@@ -1,5 +1,6 @@
 # 1C configuration dump: keep files byte-for-byte as the platform writes them
 src/** -text
+tests/DomiaryTests/** -text
 
 # Binary assets
 *.png binary
