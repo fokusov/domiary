@@ -72,6 +72,10 @@ Known traps (found in spike T-001):
 - the mobile application server has no event log: `ЗаписьЖурналаРегистрации` and `УровеньЖурналаРегистрации` do not compile there; put the reason into the exception text instead;
 - unica creates constants as `Строка(10)`: set the real type in XML before normalizing.
 - catalogs without a code (`CodeLength = 0`) must not list `StandardAttribute.Code` in `InputByString`: unica templates keep it and the load fails.
+- `XMLСтрока(<enum value>)` fails on the thin client: map enum values explicitly with `ПредопределенноеЗначение`;
+- object modules have `ПриЗаписи`, not `ПослеЗаписи` (that one exists only in forms); a wrongly named handler compiles and silently never runs;
+- managed lock spaces of catalogs do not expose every attribute: `Справочник.МестаХранения` has no `Владелец` field; lock by `Ссылка` or the whole space;
+- a new object has an empty `Ссылка`: do not compare it with other empty references in checks.
 
 ## Code rules (BSL)
 
