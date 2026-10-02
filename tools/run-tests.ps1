@@ -146,25 +146,22 @@ try {
     Assert-LoadedSource (Join-Path $script:ProjectRoot 'src') 'base'
     Assert-LoadedSource $testSource 'tests'
     $summary.loadedSourcesMatch = $true
-    $tests = @('Тесты_ПилотКлиентСервер.ПроверкаСложения')
-    $recurrenceTests = @(
-        'СозданиеПравил', 'НекорректныеПравила', 'ПравилоИзПеречисления', 'НекорректноеПеречисление',
-        'СледующаяДатаДниИНедели', 'СледующаяДатаМесяцы', 'СледующаяДатаГоды',
-        'БлижайшаяДоОтсчетаИНаОтсчете', 'БлижайшаяДниИНедели', 'БлижайшаяМесяцыБезДрейфа',
-        'БлижайшаяГодыБезДрейфа', 'БлижайшаяДалекоВБудущем',
-        'ПредставленияЕдиничныхПравил', 'СклоненияКоличества', 'ОшибкиАргументов'
-    )
-    $tests += @($recurrenceTests | ForEach-Object { "Тесты_ПовторяемостьКлиентСервер.$_" })
-    if ($IncludeNegativeControl) { $tests += 'Тесты_ПилотКлиентСервер.ЗаведомоПадающий' }
+    $negativeControlModule = 'Тесты_КонтрольПадения'
+    $modules = @(Get-ChildItem -LiteralPath (Join-Path $testSource 'CommonModules') -Filter 'Тесты_*.xml' -File |
+        Where-Object { $IncludeNegativeControl -or $_.BaseName -ne $negativeControlModule } |
+        Sort-Object BaseName | ForEach-Object { $_.BaseName })
+    if (-not $modules.Count) { throw 'Не найдены тестовые модули Тесты_*.xml.' }
+    if ($IncludeNegativeControl -and $negativeControlModule -notin $modules) {
+        throw "Не найден модуль отрицательного контроля: $negativeControlModule"
+    }
     $contexts = @('КлиентУправляемоеПриложение', 'Сервер')
-    $summary.selection = $tests
+    $summary.selection = $modules
     $summary.contexts = $contexts
-    $summary.expectedTests = $tests.Count * $contexts.Count
     $report = Join-Path $runPath 'junit.xml'
     $exitFile = Join-Path $runPath 'exit-code.txt'
     $config = Join-Path $runPath 'config.json'
     @{
-        filter = @{ extensions = @('DomiaryTests'); tests = $tests; contexts = $contexts }
+        filter = @{ extensions = @('DomiaryTests'); modules = $modules; contexts = $contexts }
         reportPath = $report; reportFormat = 'jUnit'; exitCode = $exitFile
         closeAfterTests = $true; showReport = $false
         logging = @{ file = (Join-Path $runPath 'yaxunit.log'); level = 'info' }
@@ -196,13 +193,27 @@ try {
     $summary.failures = $document.SelectNodes('//failure').Count
     $summary.errors = $document.SelectNodes('//error').Count
     $summary.skipped = $document.SelectNodes('//skipped').Count
-    if ($cases.Count -ne $summary.expectedTests) { throw "Ожидалось $($summary.expectedTests) выполнений, получено $($cases.Count)." }
+    $summary.executedTests = @($cases | ForEach-Object {
+        @{ test = $_.GetAttribute('classname'); context = $_.GetAttribute('context') }
+    })
+    # Набор методов определяет YAxUnit, а не второй список в runner.
+    # Каждый выбранный модуль должен дать тесты, каждый тест — ровно два контекста.
+    $tests = @($cases | ForEach-Object { $_.GetAttribute('classname') } | Sort-Object -Unique)
+    foreach ($module in $modules) {
+        if (-not @($tests | Where-Object { $_.StartsWith($module + '.', [StringComparison]::Ordinal) }).Count) {
+            throw "В JUnit нет тестов выбранного модуля: $module"
+        }
+    }
     foreach ($test in $tests) {
+        $module = ($test -split '\.', 2)[0]
+        if ($module -notin $modules) { throw "В JUnit незапрошенный тест: $test" }
         foreach ($context in $contexts) {
             $matches = @($cases | Where-Object { $_.GetAttribute('classname') -eq $test -and $_.GetAttribute('context') -eq $context })
             if ($matches.Count -ne 1) { throw "Неверный состав JUnit: $test [$context]" }
         }
     }
+    $summary.expectedTests = $tests.Count * $contexts.Count
+    if ($cases.Count -ne $summary.expectedTests) { throw "Ожидалось $($summary.expectedTests) выполнений, получено $($cases.Count)." }
     # Ошибки чтения набора могут быть отражены в атрибутах suite, а не только testcase.
     foreach ($suite in $document.SelectNodes('//testsuite')) {
         foreach ($attribute in @('errors', 'skipped', 'failures')) {
