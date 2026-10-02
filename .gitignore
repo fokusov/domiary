@@ -1,3 +1,6 @@
+# Local task tracker, not published (see AGENTS.md)
+/tasks/
+
 # Local 1C infobase used for development (owner's working base)
 /base/
 
