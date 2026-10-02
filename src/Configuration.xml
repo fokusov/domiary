@@ -279,21 +279,26 @@
 			<CommonModule>Миграции</CommonModule>
 			<CommonModule>ПовторяемостьКлиентСервер</CommonModule>
 			<CommonModule>Хроника</CommonModule>
+			<CommonModule>Вложения</CommonModule>
+			<CommonModule>ВложенияКлиент</CommonModule>
 			<Constant>ДнейНапоминанияПоУмолчанию</Constant>
 			<Constant>ОсновнаяВалюта</Constant>
 			<Catalog>ОбъектыНедвижимости</Catalog>
 			<Catalog>МестаХранения</Catalog>
 			<Catalog>КатегорииВещей</Catalog>
 			<Catalog>Вещи</Catalog>
+			<Catalog>Вложения</Catalog>
 			<Enum>ЕдиницыПовторения</Enum>
 			<Enum>ТипыОбъектовНедвижимости</Enum>
 			<Enum>ТипыМест</Enum>
 			<Enum>СтатусыВещей</Enum>
 			<Enum>ТипыСобытийХроники</Enum>
+			<Enum>ТипыДокументов</Enum>
 			<InformationRegister>СостояниеПриложения</InformationRegister>
 			<InformationRegister>Хроника</InformationRegister>
 			<InformationRegister>МестонахождениеВещей</InformationRegister>
 			<InformationRegister>СтатусыВещейИстория</InformationRegister>
+			<InformationRegister>ДанныеВложений</InformationRegister>
 		</ChildObjects>
 	</Configuration>
 </MetaDataObject>
