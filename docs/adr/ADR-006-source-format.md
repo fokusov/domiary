@@ -1,6 +1,6 @@
 # ADR-006 — Формат исходников и работа с метаданными
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-10-02
 **Decider:** Igor Fokusov
 

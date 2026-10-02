@@ -872,7 +872,7 @@ Resources:
 - ServiceCenter;
 - DocumentReference.
 
-A simpler v1 alternative is to store warranty fields directly on Asset.
+**Post-v1.** In v1 warranty fields are stored directly on Asset (ADR-008).
 
 Use a register if warranty history or multiple warranties become necessary.
 
@@ -1827,15 +1827,15 @@ The following decisions should be resolved before or during Phase 0:
 
 1. ~~Exact target 1C platform version.~~ **Resolved:** 1C:Enterprise 8.5 mobile platform.
 2. ~~Android-first vs Android+iOS from first public release.~~ **Resolved:** Android-first; iOS after v1.
-3. Source format and repository structure for configuration.
-4. Metadata naming prefix.
+3. ~~Source format and repository structure for configuration.~~ **Resolved:** ADR-006.
+4. ~~Metadata naming prefix.~~ **Resolved:** ADR-001 (Russian identifiers, no prefix).
 5. Binary attachment storage strategy.
 6. Backup packaging format.
 7. Notification implementation details.
-8. Test framework and CI approach.
-9. ~~Timeline: query-time aggregation vs dedicated register.~~ **Direction chosen:** dedicated register (§13); confirm in ADR-003.
-10. Task storage: catalog-style object vs dedicated document/event model.
-11. Warranty fields on Asset vs separate register.
+8. ~~Test framework and CI approach.~~ **Resolved:** ADR-007 (YAxUnit pending check T-012).
+9. ~~Timeline: query-time aggregation vs dedicated register.~~ **Resolved:** dedicated register, ADR-003.
+10. ~~Task storage: catalog-style object vs dedicated document/event model.~~ **Resolved:** ADR-008.
+11. ~~Warranty fields on Asset vs separate register.~~ **Resolved:** fields on Asset in v1, ADR-008.
 12. ~~Whether Account balances are manual state or event-derived in v1.~~ **Resolved:** manual state in v1 (§6.6), as the PRD requires.
 13. Encryption requirements for local data and backups.
 14. Minimal supported mobile OS versions.
