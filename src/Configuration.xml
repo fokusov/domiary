@@ -279,6 +279,8 @@
 			<CommonModule>Миграции</CommonModule>
 			<CommonModule>ПовторяемостьКлиентСервер</CommonModule>
 			<CommonModule>Хроника</CommonModule>
+			<CommonModule>Вложения</CommonModule>
+			<CommonModule>ВложенияКлиент</CommonModule>
 			<Constant>ДнейНапоминанияПоУмолчанию</Constant>
 			<Constant>ОсновнаяВалюта</Constant>
 			<Catalog>ОбъектыНедвижимости</Catalog>
