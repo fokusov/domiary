@@ -275,6 +275,7 @@
 			<Subsystem>Финансы</Subsystem>
 			<Subsystem>Еще</Subsystem>
 			<CommonModule>Дома</CommonModule>
+			<CommonModule>Вещи</CommonModule>
 			<CommonModule>Миграции</CommonModule>
 			<CommonModule>ПовторяемостьКлиентСервер</CommonModule>
 			<CommonModule>Хроника</CommonModule>
@@ -282,12 +283,17 @@
 			<Constant>ОсновнаяВалюта</Constant>
 			<Catalog>ОбъектыНедвижимости</Catalog>
 			<Catalog>МестаХранения</Catalog>
+			<Catalog>КатегорииВещей</Catalog>
+			<Catalog>Вещи</Catalog>
 			<Enum>ЕдиницыПовторения</Enum>
 			<Enum>ТипыОбъектовНедвижимости</Enum>
 			<Enum>ТипыМест</Enum>
+			<Enum>СтатусыВещей</Enum>
 			<Enum>ТипыСобытийХроники</Enum>
 			<InformationRegister>СостояниеПриложения</InformationRegister>
 			<InformationRegister>Хроника</InformationRegister>
+			<InformationRegister>МестонахождениеВещей</InformationRegister>
+			<InformationRegister>СтатусыВещейИстория</InformationRegister>
 		</ChildObjects>
 	</Configuration>
 </MetaDataObject>

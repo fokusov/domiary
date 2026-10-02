@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PredefinedData xmlns="http://v8.1c.ru/8.3/xcf/predef" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CatalogPredefinedItems" version="2.21">
+	<Item id="eab2a548-5ac7-4c3a-8f9f-f92157f0a9af">
+		<Name>БытоваяТехника</Name>
+		<Code/>
+		<Description>Бытовая техника</Description>
+		<IsFolder>false</IsFolder>
+	</Item>
+	<Item id="e29c37eb-ed4a-465d-a47b-1e16fb31d037">
+		<Name>Электроника</Name>
+		<Code/>
+		<Description>Электроника</Description>
+		<IsFolder>false</IsFolder>
+	</Item>
+	<Item id="db98a997-5da4-4ced-ad42-b6eba73b9a68">
+		<Name>Инструменты</Name>
+		<Code/>
+		<Description>Инструменты</Description>
+		<IsFolder>false</IsFolder>
+	</Item>
+	<Item id="ad842872-46f2-49fd-a2e5-85b78ec5978f">
+		<Name>Мебель</Name>
+		<Code/>
+		<Description>Мебель</Description>
+		<IsFolder>false</IsFolder>
+	</Item>
+	<Item id="4afec367-38f8-4568-be50-8be3c064e65d">
+		<Name>ИнженерноеОборудование</Name>
+		<Code/>
+		<Description>Инженерное оборудование</Description>
+		<IsFolder>false</IsFolder>
+	</Item>
+	<Item id="05335889-aa17-4e76-8165-3b3f9c4c1fd5">
+		<Name>Прочее</Name>
+		<Code/>
+		<Description>Прочее</Description>
+		<IsFolder>false</IsFolder>
+	</Item>
+</PredefinedData>

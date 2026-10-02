@@ -75,7 +75,8 @@ Known traps (found in spike T-001):
 - `XMLСтрока(<enum value>)` fails on the thin client: map enum values explicitly with `ПредопределенноеЗначение`;
 - object modules have `ПриЗаписи`, not `ПослеЗаписи` (that one exists only in forms); a wrongly named handler compiles and silently never runs;
 - managed lock spaces of catalogs do not expose every attribute: `Справочник.МестаХранения` has no `Владелец` field; lock by `Ссылка` or the whole space;
-- a new object has an empty `Ссылка`: do not compare it with other empty references in checks.
+- a new object has an empty `Ссылка`: do not compare it with other empty references in checks;
+- when unica regenerates a file of an object that already exists in `src/` (for example a form), the file comes as format `2.20` and the load fails with a format-version mismatch: change `version="2.20"` to `version="2.21"` in its header, then normalize.
 
 ## Code rules (BSL)
 
