@@ -66,6 +66,7 @@
 		<ChildObjects>
 			<Language>Русский</Language>
 			<CommonModule>Тесты_Вещи</CommonModule>
+			<CommonModule>Тесты_Вложения</CommonModule>
 			<CommonModule>Тесты_Дома</CommonModule>
 			<CommonModule>Тесты_КонтрольПадения</CommonModule>
 			<CommonModule>Тесты_ПилотКлиентСервер</CommonModule>
