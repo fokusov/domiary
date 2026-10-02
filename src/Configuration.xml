@@ -269,6 +269,11 @@
 		</Properties>
 		<ChildObjects>
 			<Language>Русский</Language>
+			<Subsystem>Проверка</Subsystem>
+			<CommonModule>ПроверкаПлатформыСервер</CommonModule>
+			<Constant>ВерсияДанных</Constant>
+			<Catalog>ПробныеВещи</Catalog>
+			<DataProcessor>ПроверкаПлатформы</DataProcessor>
 		</ChildObjects>
 	</Configuration>
 </MetaDataObject>

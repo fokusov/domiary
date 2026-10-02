@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Проверка платформы</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаФото" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>1. Фото</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<ShowTitle>true</ShowTitle>
+			<ExtendedTooltip name="ГруппаФотоРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+				<Button name="СделатьФото" id="3">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.СделатьФото</CommandName>
+					<ExtendedTooltip name="СделатьФотоРасширеннаяПодсказка" id="4"/>
+				</Button>
+				<Button name="ВыбратьФото" id="5">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ВыбратьФото</CommandName>
+					<ExtendedTooltip name="ВыбратьФотоРасширеннаяПодсказка" id="6"/>
+				</Button>
+				<Button name="СканироватьДокумент" id="7">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.СканироватьДокумент</CommandName>
+					<ExtendedTooltip name="СканироватьДокументРасширеннаяПодсказка" id="8"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаУведомления" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>2. Уведомления</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<ShowTitle>true</ShowTitle>
+			<ExtendedTooltip name="ГруппаУведомленияРасширеннаяПодсказка" id="10"/>
+			<ChildItems>
+				<InputField name="МинутДоУведомления" id="11">
+					<DataPath>МинутДоУведомления</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Через минут</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="МинутДоУведомленияКонтекстноеМеню" id="12"/>
+					<ExtendedTooltip name="МинутДоУведомленияРасширеннаяПодсказка" id="13"/>
+				</InputField>
+				<Button name="ЗапланироватьУведомление" id="14">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ЗапланироватьУведомление</CommandName>
+					<ExtendedTooltip name="ЗапланироватьУведомлениеРасширеннаяПодсказка" id="15"/>
+				</Button>
+				<Button name="ОтменитьУведомления" id="16">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ОтменитьУведомления</CommandName>
+					<ExtendedTooltip name="ОтменитьУведомленияРасширеннаяПодсказка" id="17"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаФайлы" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>3. Файлы</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<ShowTitle>true</ShowTitle>
+			<ExtendedTooltip name="ГруппаФайлыРасширеннаяПодсказка" id="19"/>
+			<ChildItems>
+				<Button name="ПоделитьсяФайлом" id="20">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ПоделитьсяФайлом</CommandName>
+					<ExtendedTooltip name="ПоделитьсяФайломРасширеннаяПодсказка" id="21"/>
+				</Button>
+				<Button name="СохранитьФайл" id="22">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.СохранитьФайл</CommandName>
+					<ExtendedTooltip name="СохранитьФайлРасширеннаяПодсказка" id="23"/>
+				</Button>
+				<Button name="ПрочитатьФайл" id="24">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ПрочитатьФайл</CommandName>
+					<ExtendedTooltip name="ПрочитатьФайлРасширеннаяПодсказка" id="25"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОбъем" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>4. Объём и поиск</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<ShowTitle>true</ShowTitle>
+			<ExtendedTooltip name="ГруппаОбъемРасширеннаяПодсказка" id="27"/>
+			<ChildItems>
+				<InputField name="КоличествоЗаписей" id="28">
+					<DataPath>КоличествоЗаписей</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Записей</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="КоличествоЗаписейКонтекстноеМеню" id="29"/>
+					<ExtendedTooltip name="КоличествоЗаписейРасширеннаяПодсказка" id="30"/>
+				</InputField>
+				<Button name="СгенерироватьДанные" id="31">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.СгенерироватьДанные</CommandName>
+					<ExtendedTooltip name="СгенерироватьДанныеРасширеннаяПодсказка" id="32"/>
+				</Button>
+				<InputField name="СтрокаПоиска" id="33">
+					<DataPath>СтрокаПоиска</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Найти</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СтрокаПоискаКонтекстноеМеню" id="34"/>
+					<ExtendedTooltip name="СтрокаПоискаРасширеннаяПодсказка" id="35"/>
+				</InputField>
+				<Button name="ЗамеритьПоиск" id="36">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ЗамеритьПоиск</CommandName>
+					<ExtendedTooltip name="ЗамеритьПоискРасширеннаяПодсказка" id="37"/>
+				</Button>
+				<Button name="ЗамеритьСписок" id="38">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ЗамеритьСписок</CommandName>
+					<ExtendedTooltip name="ЗамеритьСписокРасширеннаяПодсказка" id="39"/>
+				</Button>
+				<Button name="УдалитьПробныеДанные" id="40">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.УдалитьПробныеДанные</CommandName>
+					<ExtendedTooltip name="УдалитьПробныеДанныеРасширеннаяПодсказка" id="41"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаВерсия" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>5. Версия данных</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<ShowTitle>true</ShowTitle>
+			<ExtendedTooltip name="ГруппаВерсияРасширеннаяПодсказка" id="43"/>
+			<ChildItems>
+				<Button name="ЗаписатьВерсию" id="44">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ЗаписатьВерсию</CommandName>
+					<ExtendedTooltip name="ЗаписатьВерсиюРасширеннаяПодсказка" id="45"/>
+				</Button>
+				<Button name="ПоказатьСостояние" id="46">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ПоказатьСостояние</CommandName>
+					<ExtendedTooltip name="ПоказатьСостояниеРасширеннаяПодсказка" id="47"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Журнал" id="48">
+			<DataPath>Журнал</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Журнал</v8:content>
+				</v8:item>
+			</Title>
+			<TitleLocation>Top</TitleLocation>
+			<Height>10</Height>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="ЖурналКонтекстноеМеню" id="49"/>
+			<ExtendedTooltip name="ЖурналРасширеннаяПодсказка" id="50"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="51">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ПроверкаПлатформы</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="Журнал" id="52">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="МинутДоУведомления" id="53">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>4</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КоличествоЗаписей" id="54">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>6</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СтрокаПоиска" id="55">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="СделатьФото" id="56">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сделать фото</v8:content>
+				</v8:item>
+			</Title>
+			<Action>СделатьФотоОбработка</Action>
+		</Command>
+		<Command name="ВыбратьФото" id="57">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать фото из галереи</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ВыбратьФотоОбработка</Action>
+		</Command>
+		<Command name="СканироватьДокумент" id="58">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сканировать документ</v8:content>
+				</v8:item>
+			</Title>
+			<Action>СканироватьДокументОбработка</Action>
+		</Command>
+		<Command name="ЗапланироватьУведомление" id="59">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запланировать уведомление</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ЗапланироватьУведомлениеОбработка</Action>
+		</Command>
+		<Command name="ОтменитьУведомления" id="60">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить уведомления</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ОтменитьУведомленияОбработка</Action>
+		</Command>
+		<Command name="ПоделитьсяФайлом" id="61">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить JSON и поделиться</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ПоделитьсяФайломОбработка</Action>
+		</Command>
+		<Command name="СохранитьФайл" id="62">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить JSON и сохранить</v8:content>
+				</v8:item>
+			</Title>
+			<Action>СохранитьФайлОбработка</Action>
+		</Command>
+		<Command name="ПрочитатьФайл" id="63">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать и прочитать файл</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ПрочитатьФайлОбработка</Action>
+		</Command>
+		<Command name="СгенерироватьДанные" id="64">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сгенерировать записи</v8:content>
+				</v8:item>
+			</Title>
+			<Action>СгенерироватьДанныеОбработка</Action>
+		</Command>
+		<Command name="ЗамеритьПоиск" id="65">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Замерить поиск</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ЗамеритьПоискОбработка</Action>
+		</Command>
+		<Command name="ЗамеритьСписок" id="66">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Замерить чтение списка</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ЗамеритьСписокОбработка</Action>
+		</Command>
+		<Command name="УдалитьПробныеДанные" id="67">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить пробные данные</v8:content>
+				</v8:item>
+			</Title>
+			<Action>УдалитьПробныеДанныеОбработка</Action>
+		</Command>
+		<Command name="ЗаписатьВерсию" id="68">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Увеличить версию данных</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ЗаписатьВерсиюОбработка</Action>
+		</Command>
+		<Command name="ПоказатьСостояние" id="69">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать состояние базы</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ПоказатьСостояниеОбработка</Action>
+		</Command>
+	</Commands>
+</Form>
