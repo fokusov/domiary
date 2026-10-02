@@ -269,6 +269,20 @@
 		</Properties>
 		<ChildObjects>
 			<Language>Русский</Language>
+			<Subsystem>Главная</Subsystem>
+			<Subsystem>Вещи</Subsystem>
+			<Subsystem>Задачи</Subsystem>
+			<Subsystem>Финансы</Subsystem>
+			<Subsystem>Еще</Subsystem>
+			<CommonModule>Миграции</CommonModule>
+			<CommonModule>ПовторяемостьКлиентСервер</CommonModule>
+			<CommonModule>Хроника</CommonModule>
+			<Constant>ДнейНапоминанияПоУмолчанию</Constant>
+			<Constant>ОсновнаяВалюта</Constant>
+			<Enum>ЕдиницыПовторения</Enum>
+			<Enum>ТипыСобытийХроники</Enum>
+			<InformationRegister>СостояниеПриложения</InformationRegister>
+			<InformationRegister>Хроника</InformationRegister>
 		</ChildObjects>
 	</Configuration>
 </MetaDataObject>

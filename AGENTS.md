@@ -69,6 +69,8 @@ Known traps (found in spike T-001):
 - every catalog, document, register and constant must have `DataLockControlMode = Managed`: the mobile application supports only managed locks, and unica templates set `Automatic`;
 - `ТекущаяУниверсальнаяДата()` is not available on the mobile client; use `УниверсальноеВремя(ТекущаяДата())` or get the date from the server;
 - after `unica.form.compile` and `unica.form.add`, check that the form is registered in the object's `ChildObjects` only once.
+- the mobile application server has no event log: `ЗаписьЖурналаРегистрации` and `УровеньЖурналаРегистрации` do not compile there; put the reason into the exception text instead;
+- unica creates constants as `Строка(10)`: set the real type in XML before normalizing.
 
 ## Code rules (BSL)
 
