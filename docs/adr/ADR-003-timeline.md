@@ -1,6 +1,6 @@
 # ADR-003 — Хроника (общая история событий)
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-10-02
 **Decider:** Igor Fokusov
 

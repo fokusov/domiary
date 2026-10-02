@@ -1,6 +1,6 @@
 # ADR-007 — Тестирование
 
-**Status:** Proposed
+**Status:** Accepted (основной вариант — после проверки T-012)
 **Date:** 2026-10-02
 **Decider:** Igor Fokusov
 

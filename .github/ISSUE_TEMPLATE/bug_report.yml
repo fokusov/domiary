@@ -1,0 +1,72 @@
+name: Сообщение об ошибке
+description: Что-то работает не так, как ожидалось
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Спасибо, что нашли время сообщить об ошибке! Опишите, что произошло — коротко и своими словами.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Что произошло?
+      description: Опишите проблему своими словами.
+      placeholder: "Например: приложение закрылось, когда я добавлял фото квартиры."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Как воспроизвести?
+      description: Пошагово, что вы делали перед появлением проблемы.
+      placeholder: |
+        1. Открыл раздел «Вещи»
+        2. Нажал «Добавить»
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Что должно было произойти?
+      description: Как вы ожидали, что приложение себя поведёт.
+    validations:
+      required: true
+
+  - type: input
+    id: app-version
+    attributes:
+      label: Версия приложения
+      description: Если знаете где её найти — «О приложении». Не обязательно.
+      placeholder: "Например: 0.1"
+    validations:
+      required: false
+
+  - type: input
+    id: android-version
+    attributes:
+      label: Версия Android
+      description: Настройки → «О телефоне». Не обязательно.
+      placeholder: "Например: Android 14"
+    validations:
+      required: false
+
+  - type: input
+    id: device
+    attributes:
+      label: Модель телефона
+      description: Не обязательно, но помогает воспроизвести проблему.
+      placeholder: "Например: Samsung Galaxy A54"
+    validations:
+      required: false
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Дополнительно
+      description: Скриншоты, записи экрана, любые детали. Не обязательно.
+    validations:
+      required: false

@@ -1,6 +1,6 @@
 # ADR-008 — Хранение задач, повторяемости и гарантии
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-10-02
 **Decider:** Igor Fokusov
 
