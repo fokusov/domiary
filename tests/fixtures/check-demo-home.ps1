@@ -1,4 +1,4 @@
-# Проверка демо-фикстуры demo-home.json.
+﻿# Проверка демо-фикстуры demo-home.json.
 # Проверяет валидность JSON, ссылки по id, состав набора и связные инварианты
 # (дерево мест хранения, разницу показаний, расчёт следующего срока обслуживания).
 param(
@@ -147,8 +147,10 @@ foreach ($l in $locations) {
 
 # --- Вещи ---------------------------------------------------------------------
 
-$assetStatuses = 'Используется', 'Хранится', 'Требует ремонта', 'Передано', 'Списано', 'Продано'
-$today = (Get-Date).Date
+$assetStatuses = 'Используется', 'Хранится', 'Требует ремонта', 'Передано', 'Выбыло', 'Продано'
+# Окно дат считается от referenceDate набора, а не от сегодняшней даты: иначе фикстура «стареет».
+if (-not $data.referenceDate) { Add-Error 'нет referenceDate' }
+$today = [datetime]::ParseExact([string]$data.referenceDate, 'yyyy-MM-dd', [Globalization.CultureInfo]::InvariantCulture)
 $windowStart = $today.AddYears(-6)
 
 foreach ($a in $assets) {
