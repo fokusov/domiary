@@ -8,5 +8,5 @@
 - When writing a task for Codex or GLM, make the task file self-contained: context, files, acceptance criteria, what not to touch.
 - Claude launches Codex and GLM itself through opencode, one git worktree per task under `C:\DEV\domiary-wt\<task-id>`:
   - Codex: `opencode run --auto -m openai/gpt-6.1-sol ...`
-  - GLM: `opencode run --auto -m openrouter/~z-ai/glm-latest ...` (run GLM tasks one at a time: parallel runs exceed the OpenRouter credit limit; `opencode-go/*` models need a subscription that is not active)
+  - GLM: `opencode run --auto -m zai-coding-plan/glm-5.3 ...` (Z.AI Coding Plan; do not use OpenRouter or `opencode-go/*` GLM models: low balance / no subscription)
   - agents commit locally; Claude reviews the diff, pushes the branch and opens the PR.
